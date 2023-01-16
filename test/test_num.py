@@ -11,6 +11,6 @@ class TestNum:
             num.add(i)
         return 11/7 == num.mid() and round(num.div(),3) == 0.787
 
-testNum = TestNum()
+# testNum = TestNum()
 
-print(testNum.testnum())
+# print(testNum.testnum())

@@ -11,6 +11,6 @@ class TestSym:
             sym.add(i)
         return "a" == sym.mid() and round(sym.div(),3) == 1.379
 
-testSym = TestSym()
+# testSym = TestSym()
 
-print(testSym.testsym())
+# print(testSym.testsym())

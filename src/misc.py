@@ -9,15 +9,18 @@ class Misc:
         self.the = {}
         self.settings()
         self.cli()
-        self.check()
+        # self.check()
     
     def getThe(self):
         return self.the
+    
+    def getHelp(self):
+        return self.help
         
-    def check(self):
-        if self.the['help'] == True:
-            print(self.help)
-            exit()
+    # def check(self):
+    #     if self.the['help'] == True:
+    #         print(self.help)
+    #         exit()
     
     def settings(self):
         keyVals = re.findall("\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", self.help)
@@ -32,7 +35,7 @@ class Misc:
                 return True
             elif s1.lower() == "false":
                 return False
-        
+            return s1
         try:
             val = float(s)
             if(val == int(val)):
@@ -52,8 +55,10 @@ class Misc:
                 if(args[i] == "-" + strKey[0] or args[i] == "-" + strKey):
                     strVal = strVal == "False" and "True" or strVal == "True" and "False" or args[i+1]
             
+            # print(strVal)
             self.the[key] = self.coerce(strVal)
-    
+            # print(self.the[key])
+        # print(self.the)
             
 
 
