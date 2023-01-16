@@ -12,7 +12,6 @@ class testengine:
         for i in self.testcases:
             self.help+=" -g  {0}\t{1}\n".format(i, self.testcases[i][0])
     def runtests(self, the):
-        print(the)
         if(the["help"] == True):
             print(self.help)
             exit()
