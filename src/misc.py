@@ -60,6 +60,4 @@ class Misc:
             # print(self.the[key])
         # print(self.the)
             
-
-
     
