@@ -1,4 +1,5 @@
 from src.num import NUM
+from src.globals import *
 
 class TestNum:
 
@@ -9,7 +10,7 @@ class TestNum:
 
         for i in inp:
             num.add(i)
-        return 11/7 == num.mid() and round(num.div(),3) == 0.787
+        return 11/7 == num.mid() and rnd(num.div(),3) == 0.787
 
 # testNum = TestNum()
 

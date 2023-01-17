@@ -1,4 +1,5 @@
 from src.num import NUM
+from src.globals import *
 
 class TestRand:
     def __init__(self,seed):
@@ -11,8 +12,9 @@ class TestRand:
             num1.add(self.rand(0,1))
         for _ in range(1000):
             num2.add(self.rand(0,1))
-        m1,m2 = round(num1.mid(),10), round(num2.mid(),10)
-        return m1==m2 and "0.5" == str(m1)[:3]
+        m1,m2 = rnd(num1.mid(),10), rnd(num2.mid(),10)
+        print(m1,rnd(m1,1),m2)
+        return m1==m2 and 0.5 == rnd(m1,1)
 
     
     def rand(self,lo,hi):
