@@ -3,13 +3,15 @@ from src.globals import *
 
 class TestRand:
     def __init__(self,seed):
-        self.seed=seed
+        self.tempSeed = seed
+        self.seed = seed
     def testrand(self):
         
         num1 = NUM()
         num2 = NUM()
         for _ in range(1000):
             num1.add(self.rand(0,1))
+        self.seed = self.tempSeed
         for _ in range(1000):
             num2.add(self.rand(0,1))
         m1,m2 = rnd(num1.mid(),10), rnd(num2.mid(),10)
@@ -20,8 +22,8 @@ class TestRand:
     def rand(self,lo,hi):
         lo = lo or 0
         hi = hi or 1
-        Seed = ((16807*self.seed)%2147483647)
-        return lo + (hi-lo) * Seed / 2147483647
+        self.seed = ((16807*self.seed)%2147483647)
+        return lo + (hi-lo) * self.seed / 2147483647
 
 '''
 eg("rand","generate, reset, regenerate same", function()
