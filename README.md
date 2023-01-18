@@ -1,16 +1,10 @@
 # Team2_hw1_ase
 
-<p>
-  <a href="https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/Vishnu-ve56/team2_hw1_ase">
-  </a>
-  <a>
-    <img src="https://img.shields.io/badge/language-python-red.svg">
-  </a>
-  <a>
-    [![Run lint and tests](https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/.github/workflows/run-test.yml/badge.svg?branch=main)]            (https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/.github/workflows/run-test.yml)
-  </a>
-<p>
+
+[![Run Tests](https://github.com/Vishnu-ve56/team2_hw1_ase/actions/workflows/run-test.yml/badge.svg)](https://github.com/Vishnu-ve56/team2_hw1_ase/actions/workflows/run-test.yml)
+[![GitHub](https://img.shields.io/github/license/Vishnu-ve56/team2_hw1_ase?color=green&label=license&logo=MIT)](https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/LICENSE)
+
+
 
 
 This is a Repository for HW1 ASE CSC 591 Course.
