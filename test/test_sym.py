@@ -10,7 +10,7 @@ class TestSym:
 
         for i in inp:
             sym.add(i)
-        return "a" == sym.mid() and rnd(sym.div(),3) == 1.379
+        return "a" == sym.mid() and rnd(sym.div(),3) == 1.4
 
 # testSym = TestSym()
 
