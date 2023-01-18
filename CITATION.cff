@@ -1,0 +1,24 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Team 2 HW Converting Lua code to Python
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Arun Srinivasan
+    family-names: Parthasarathy
+    email: apartha4@ncsu.edu
+  - given-names: Vishnu Vinod
+    family-names: Erapalli
+    email: verapal@ncsu.edu
+  - given-names: Karan Pradeep
+    family-names: Gala
+    email: kgala2@ncsu.edu
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7420051
+repository-code: 'https://github.com/Vishnu-ve56/team2_hw1_ase'
+license: MIT
