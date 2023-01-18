@@ -7,6 +7,9 @@
   <a>
     <img src="https://img.shields.io/badge/language-python-red.svg">
   </a>
+  <a>
+    [![Run lint and tests](https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/.github/workflows/run-test.yml/badge.svg?branch=main)]            (https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/.github/workflows/run-test.yml)
+  </a>
 <p>
 
 
