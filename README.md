@@ -4,7 +4,7 @@
 [![Test Runs](https://github.com/Vishnu-ve56/team2_hw1_ase/actions/workflows/run-test.yml/badge.svg)](https://github.com/Vishnu-ve56/team2_hw1_ase/actions/workflows/run-test.yml)
 [![GitHub](https://img.shields.io/github/license/Vishnu-ve56/team2_hw1_ase?color=green&label=license&logo=MIT)](https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/LICENSE)
 [![Github](https://img.shields.io/badge/language-python-red.svg)](https://www.python.org/downloads/)
-
+[![DOI](https://zenodo.org/badge/589027273.svg)](https://zenodo.org/badge/latestdoi/589027273)
 
 
 
