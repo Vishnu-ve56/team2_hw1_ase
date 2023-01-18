@@ -23,7 +23,7 @@ class testengine:
                     print("❌ fail:",i)
                 else:
                     print("✅ pass:",i)
-
+        print('\nNumber of failed tests: ', self.fails)
 
         
     
