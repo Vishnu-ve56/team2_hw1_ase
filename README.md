@@ -1,5 +1,15 @@
 # Team2_hw1_ase
 
+<p>
+  <a href="https://github.com/Vishnu-ve56/team2_hw1_ase/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/Vishnu-ve56/team2_hw1_ase">
+  </a>
+  <a>
+    <img src="https://img.shields.io/badge/language-python-red.svg">
+  </a>
+<p>
+
+
 This is a Repository for HW1 ASE CSC 591 Course.
 
 This is a command line parser written in python which implements the functionalities of a lua script provided in class. 
