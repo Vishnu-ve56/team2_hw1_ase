@@ -7,7 +7,7 @@ class testengine:
         self.the = the
         self.help = ""
         self.fails=0
-        self.testcases= {"sym":["check syms", TestSym().testsym],"num":["check nums", TestNum().testnum],"rand":["generate, reset, regenerate same",TestRand(self.the["seed"]).testrand],"the":["show settings",TestThe().testthe]}
+        self.testcases= {"sym":["check syms", TestSym().testsym],"num":["check nums", TestNum().testnum],"rand":["generate, reset, regenerate same",TestRand(self.the["seed"]).testrand],"the":["show settings",TestThe(self.the).testthe]}
     def concat(self, help):
         self.help+=help
         for i in self.testcases:

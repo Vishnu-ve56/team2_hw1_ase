@@ -15,7 +15,6 @@ class TestRand:
         for _ in range(1000):
             num2.add(self.rand(0,1))
         m1,m2 = rnd(num1.mid(),10), rnd(num2.mid(),10)
-        print(m1,rnd(m1,1),m2)
         return m1==m2 and 0.5 == rnd(m1,1)
 
     

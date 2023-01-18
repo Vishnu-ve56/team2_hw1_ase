@@ -1,13 +1,30 @@
 class TestThe:
+    def __init__(self, the) -> None:
+        self.the = the
     def testthe(self):
-        pass
+        self.oo(self.the)
+        return True
     def oo(self,t):
         print(self.o(t))
         return t
     def o(self,t):
-        if type(t)!="something":
+        if type(t)!=dict:
             return str(t)
-        return t
+        
+        def fun(k,v):
+            if(str(k).find('_')!=0):
+                v = self.o(v)
+                return ":" + str(k) + " " + self.o(v)
+            
+            else:
+                return False
+        array = []
+        for key in t:
+            output = fun(key, t[key])
+            if output:
+                array.append(output)
+            array.sort()
+        return "{" + " ".join(str(val) for val in array) + "}"
 
 
 '''
