@@ -1,5 +1,8 @@
 ✅ pass: sym
 ✅ pass: num
 ✅ pass: rand
-{:dump False :go ALL :help False :seed 937162211}
+{:dump False :file ../data/auto93.csv :go ALL :help False :seed 937162211}
 ✅ pass: the
+✅ pass: csv
+
+Number of failed tests:  0
