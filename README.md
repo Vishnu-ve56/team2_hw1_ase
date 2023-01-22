@@ -26,6 +26,5 @@ To run the file just:
         
         - To run a specific test, run the command `python -m src.main -g <test-name>`
         
-        
         - To see the help section, run the command `python -m src.main -h`
         
