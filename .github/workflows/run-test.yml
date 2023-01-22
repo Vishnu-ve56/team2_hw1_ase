@@ -28,6 +28,7 @@ jobs:
         python -m pip install --upgrade pip
     - name: Test and code coverage with custom test engine
       run: |
+        cd HW1
         python -m src.main -g ALL > out/script.out       
         failureStr=$(python -m src.main -g ALL | grep -i "Number of failed tests:")
         numFailures=${failureStr:0-1}
