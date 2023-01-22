@@ -1,12 +1,16 @@
+from src.globals import rnd
 import math 
 import sys
 class NUM:
-    def __init__(self):
+    def __init__(self, at = 0,txt = ""):
+        self.at = at
+        self.txt = txt
         self.mu = 0
         self.n = 0
         self.m2 = 0
         self.hi =-1*sys.maxsize
         self.lo = sys.maxsize
+        self.w = -1 if self.txt.index('-') > 0 else 1
 
     def add(self, n):
         if n != "?":
@@ -22,4 +26,9 @@ class NUM:
     
     def div(self):
         return (self.m2 < 0 or self.n < 2) and 0 or (self.m2/(self.n-1))**0.5
-        
+
+    def rnd(self, x, n):
+        if x=="?":
+            return x
+        else:
+            rnd(x,n)
