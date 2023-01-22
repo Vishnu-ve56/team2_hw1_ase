@@ -17,6 +17,3 @@ class csv:
                 fun(parsedRow)
 
 
-# cs = csv("../data/auto93.csv")
-
-# cs.readFromCsv()
