@@ -1,10 +1,14 @@
 import math
 class SYM:
-    def __init__(self):
+    def __init__(self, at=0, txt=""):
         self.n=0
         self.has={}
         self.most=0
         self.mode= None
+        self.at= at
+        self.txt= txt
+
+
     
     def add(self, x):
         if x != "?":
@@ -25,5 +29,8 @@ class SYM:
         for i in self.has:
             e+=fun(self.has[i]/self.n)
         return -e
+    
+    def rnd(self, x , n):
+        return x
 
 
