@@ -10,7 +10,13 @@ class NUM:
         self.m2 = 0
         self.hi =-1*sys.maxsize
         self.lo = sys.maxsize
-        self.w = -1 if self.txt.index('-') > 0 else 1
+        try:
+            self.w = self.txt.index('-')
+            self.w = -1
+
+        except:
+            self.w = 1
+
 
     def add(self, n):
         if n != "?":
