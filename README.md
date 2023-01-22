@@ -18,8 +18,14 @@ To run these scripts, download the latest version of [Python](https://www.python
 
 ## Installation
 
-Check if python already exists on your system by typing in the command "python --version" on your terminal/cmd. If the version does not pop up, visit [this website](https://www.python.org/downloads/) to download the python installer package for your system based on the operating system.
+To run the file just:
+        
+        - Enter the neccesary HW folder by using `cd HW<Insert Homework Number>`
 
-Refer [Install.md]() for the installation guide in our repository.
-
-
+        - To run all tests, run the command `python -m src.main -g ALL`
+        
+        - To run a specific test, run the command `python -m src.main -g <test-name>`
+        
+        
+        - To see the help section, run the command `python -m src.main -h`
+        
