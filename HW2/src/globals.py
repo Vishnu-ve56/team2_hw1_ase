@@ -18,3 +18,10 @@ def coerce(s):
         val = fun(s.strip())
         
     return val 
+
+def kap(t,fun):
+    u={}
+    for k,v in enumerate(t):
+        v,k = fun(k,v)
+        u[k or 1+len(u)] = v
+    return u
