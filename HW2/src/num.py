@@ -1,5 +1,4 @@
 from src.globals import rnd
-import math 
 import sys
 class NUM:
     def __init__(self, at = 0,txt = ""):

@@ -20,8 +20,3 @@ class Data:
     def stats(self):
         pass
             
-data = Data("../data/auto93.csv")
-
-# print(len(data.rows))
-# print(data.cols.y[0].w)
-# print(len(data.cols.x))

@@ -4,5 +4,6 @@
 {:dump False :file ../data/auto93.csv :go ALL :help False :seed 937162211}
 ✅ pass: the
 ✅ pass: csv
+✅ pass: data
 
 Number of failed tests:  0
