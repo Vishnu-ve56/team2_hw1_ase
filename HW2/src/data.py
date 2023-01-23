@@ -1,6 +1,9 @@
 from src.csv import csv
 from src.rows import Row
 from src.cols import Col
+
+from src.globals import kap
+
 class Data:
     def __init__(self, src):
         self.rows=[]
@@ -17,6 +20,15 @@ class Data:
         else:
             self.cols=Col(t)
     
-    def stats(self):
-        pass
+    def stats(self, what, cols, nPlaces):
+        def fun(k, col):
+            callable = getattr(col, what)
+            return col.rnd(callable(), nPlaces), col.txt
+        return kap(cols, fun)
+
+
+# data = Data("../data/auto93.csv")
+
+# print(data.stats("mid",2))
+# print(data.stats("div",2))
             

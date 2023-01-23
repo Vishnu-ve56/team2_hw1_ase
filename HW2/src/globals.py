@@ -25,3 +25,25 @@ def kap(t,fun):
         v,k = fun(k,v)
         u[k or 1+len(u)] = v
     return u
+
+def oo(t):
+    print(o(t))
+    return t
+def o(t):
+    if type(t)!=dict:
+        return str(t)
+    
+    def fun(k,v):
+        if(str(k).find('_')!=0):
+            v = o(v)
+            return ":" + str(k) + " " + o(v)
+        
+        else:
+            return False
+    array = []
+    for key in t:
+        output = fun(key, t[key])
+        if output:
+            array.append(output)
+        array.sort()
+    return "{" + " ".join(str(val) for val in array) + "}"

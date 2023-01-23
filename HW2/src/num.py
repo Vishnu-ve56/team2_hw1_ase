@@ -36,4 +36,4 @@ class NUM:
         if x=="?":
             return x
         else:
-            rnd(x,n)
+            return rnd(x,n)

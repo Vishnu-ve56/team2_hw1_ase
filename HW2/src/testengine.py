@@ -4,6 +4,7 @@ from test.test_rand import TestRand
 from test.test_the import TestThe
 from test.test_csvfile import TestCSV
 from test.test_data import TestData
+from test.test_stats import TestStats
 
 class testengine:
     def __init__(self,the):
@@ -11,7 +12,7 @@ class testengine:
         self.help = ""
         self.fails=0
         self.testcases= {"sym":["check syms", TestSym().testsym],"num":["check nums", TestNum().testnum],"rand":["generate, reset, regenerate same",TestRand(self.the["seed"]).testrand],
-        "the":["show settings",TestThe(self.the).testthe], "csv":["read from csv",TestCSV(self.the["file"]).testcsv],  "data":["read DATA csv",TestData().testdata]}
+        "the":["show settings",TestThe(self.the).testthe], "csv":["read from csv",TestCSV(self.the["file"]).testcsv],  "data":["read DATA csv",TestData().testdata], "stats": ["stats from DATA",TestStats().teststats]}
         
     def concat(self, help):
         self.help+=help
