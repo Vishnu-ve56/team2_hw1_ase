@@ -26,9 +26,19 @@ def kap(t,fun):
         u[k or 1+len(u)] = v
     return u
 
+def map(t, fun):
+    u={}
+    for k,v in enumerate(t):
+        v,k = fun(k,v)
+        u[k or 1+len(u)] = v
+    return u
+
+
+
 def oo(t):
     print(o(t))
     return t
+
 def o(t):
     if type(t)!=dict:
         return str(t)
