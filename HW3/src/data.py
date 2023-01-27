@@ -57,11 +57,38 @@ class Data:
         return sort(map(self.rows))
 
 
-    def half(self, rows):
-        pass
+    def half(self, rows, cols, above):
+        def project(row):
+            return {row : row, dist : math.cosine(dist(row,A),dist(row,B),c)}
+        def dist(row1,row2):
+            return self.dist(row1,row2,cols)
+        rows = rows or self.rows
+        some = many(rows, the.Sample)
+        A = above or any(some)
+        B = self.around(A,some)[(the.Far * len(rows)//1)].row
+        c = dist(A,B)
+        left,right = {},{}
+        for n,tmp in enumerate(sort(map(rows,project),lt("dist"))):
+            if n <= len(rows)//2:
+                push(left, tmp.row)
+                mid = tmp.row
+            else:
+                push(right, tmp.row)
+        return left, right, A, B, mid, c
+
+        
 
     def cluster(self, rows, min, cols, above):
-        pass
+        rows = rows or self.rows
+        min = min or len(rows)^the.min
+        cols = cols or self.cols.x
+        node = {data : self.clone(rows)}
+        if len(rows) > 2*min:
+            left, right, node.A, node.B, node.mid = self.half(rows, cols, above)
+            if self.better(node.B, node.A):
+                left,right,node.A,node.B = right,left,node.B,node.A
+            node.left  = self.sway(left,  min, cols, node.A)
+        return node
 
     def sway(self, rows, min, cols, above):
         pass
