@@ -39,4 +39,11 @@ jobs:
         python -m src.main -g ALL > out/script.out       
         failureStr=$(python -m src.main -g ALL | grep -i "Number of failed tests:")
         numFailures=${failureStr:0-1}
+        if [ $numFailures -gt 0 ]; then exit $numFailures; else exit 0; fi
+    - name: Test code with custom test engine for HW3
+      run: |
+        cd HW3
+        python -m src.main -g ALL > out/script.out       
+        failureStr=$(python -m src.main -g ALL | grep -i "Number of failed tests:")
+        numFailures=${failureStr:0-1}
         if [ $numFailures -gt 0 ]; then exit $numFailures; else exit 0; fi  
