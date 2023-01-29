@@ -46,7 +46,7 @@ def oo(t):
     return t
 
 def o(t):
-    if type(t)!=dict:
+    if type(t)!=dict and type(t)!=list:
         return str(t)
     
     def fun(k,v):
@@ -57,9 +57,12 @@ def o(t):
         else:
             return False
     array = []
-    for key in t:
-        output = fun(key, t[key])
-        if output:
-            array.append(output)
-        array.sort()
+    if type(t) == dict:
+        for key in t:
+            output = fun(key, t[key])
+            if output:
+                array.append(output)
+            array.sort()
+    elif type(t) == list:
+        array = t
     return "{" + " ".join(str(val) for val in array) + "}"
