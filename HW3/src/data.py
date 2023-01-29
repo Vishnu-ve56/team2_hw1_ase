@@ -13,6 +13,8 @@ class Data:
         if type(src)==str:
             cs=csv(src)
             cs.readFromCsv(self.add)
+        else:
+            map(src, self.add)
         
     def add(self, t):
         if self.cols:
