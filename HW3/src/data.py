@@ -103,14 +103,6 @@ class Data:
     #     return s1/len(ys) < s2/len(ys)
     
 
-    # # incomplete
-    # def dist(self, row1, row2, cols):
-    #     n,d = 0,0
-    #     for _,col in enumerate(cols or self.cols.x):
-    #         n+=1
-    #         d+=col.dist(row1.cells[col.at],row2.cells[col.at])^the.p
-    #     return (d/n) ^ (1/the.p)
-    
 
     # def cluster(self, rows, min, cols, above):
     #     rows = rows or self.rows
