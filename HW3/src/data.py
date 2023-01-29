@@ -2,7 +2,7 @@ from src.csv import csv
 from src.rows import Row
 from src.cols import Col
 
-from src.globals import kap,userdefinedmap,mapNew, rnd
+from src.globals import *
 from src.misc import Misc
 import math
 
@@ -56,6 +56,43 @@ class Data:
 
         val = sorted(val, key=lambda x: x[1])
         return val
+
+    def half(self, rows = None, cols = None, above = None):
+        misc = Misc()
+        the = misc.getThe()
+        def project(row):
+            return [row, cosine(dist(row,A),dist(row,B),c)]
+        def dist(row1,row2):
+            return self.dist(row1,row2,cols)
+
+        rows = rows or self.rows
+        some = many(rows, the["Sample"])
+        A = above or any(some)
+        listIndice = int((the["Far"] * len(rows))//1)
+        
+
+        B = self.around(A,some)[listIndice-1][0]
+
+        c = dist(A,B)
+
+        val = list(map(project, rows))
+        val = sorted(val, key=lambda x: x[1])
+        left = []
+        right = []
+
+        nums = 0
+        mid = None
+        for values in val:
+            nums+=1
+            if nums <= len(rows)/2:
+                left.append(values[0])
+                mid = values[0]
+            else:
+                right.append(values[0])
+            
+
+        return left, right, A, B, mid, c
+
     # def better(self, row1,row2):
     #     s1,s2,ys = 0,0,self.cols.y
     #     for _,col in enumerate(ys):
@@ -74,32 +111,6 @@ class Data:
     #         d+=col.dist(row1.cells[col.at],row2.cells[col.at])^the.p
     #     return (d/n) ^ (1/the.p)
     
-
-    # # incomplete
-    # def around(self, row1):
-    #     return sort(map(self.rows))
-
-
-    # def half(self, rows, cols, above):
-    #     def project(row):
-    #         return {row : row, dist : math.cosine(dist(row,A),dist(row,B),c)}
-    #     def dist(row1,row2):
-    #         return self.dist(row1,row2,cols)
-    #     rows = rows or self.rows
-    #     some = many(rows, the.Sample)
-    #     A = above or any(some)
-    #     B = self.around(A,some)[(the.Far * len(rows)//1)].row
-    #     c = dist(A,B)
-    #     left,right = {},{}
-    #     for n,tmp in enumerate(sort(map(rows,project),lt("dist"))):
-    #         if n <= len(rows)//2:
-    #             push(left, tmp.row)
-    #             mid = tmp.row
-    #         else:
-    #             push(right, tmp.row)
-    #     return left, right, A, B, mid, c
-
-        
 
     # def cluster(self, rows, min, cols, above):
     #     rows = rows or self.rows

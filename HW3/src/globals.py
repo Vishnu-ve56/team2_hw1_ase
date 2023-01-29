@@ -1,4 +1,5 @@
 import math
+
 def rnd(n, places):
     mult=10**(places or 3)
     return math.floor(n*mult + 0.5)/mult
@@ -66,3 +67,31 @@ def o(t):
     elif type(t) == list:
         array = t
     return "{" + " ".join(str(val) for val in array) + "}"
+
+Seed=937162211
+
+def rand(lo, hi=None):
+    global Seed
+    lo, hi = lo or 0, hi or 1
+    Seed  =  (16807 * Seed) % 2147483647
+    return lo + (hi-lo) * Seed/2147483647 
+
+def rint(lo, hi= None):
+    return math.floor(0.5 + rand(lo, hi))
+
+def cosine(a,b,c):
+    x1 = (a**2 + c**2 - b**2)/(2*c)
+    x2 = max(0,min(1,x1))
+    y = (a**2 - x2**2)**0.5
+    return x2,y
+
+
+def many(t,n ):
+    u = []
+    for i in range(0,n):
+        u.append(any(t))
+    return u
+
+
+def any(t):
+    return t[rint(len(t))-1]
