@@ -26,7 +26,7 @@ def kap(t,fun):
         u[k or 1+len(u)] = v
     return u
 
-def map(t, fun):
+def userdefinedmap(t, fun):
     u={}
     for k,v in enumerate(t):
         v,k = fun(v)

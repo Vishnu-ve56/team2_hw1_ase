@@ -6,7 +6,7 @@ from test.test_csvfile import TestCSV
 from test.test_data import TestData
 from test.test_stats import TestStats
 from test.test_dataclone import TestClone
-
+from test.test_around import TestAround
 class testengine:
     def __init__(self,the):
         self.the = the
@@ -14,7 +14,7 @@ class testengine:
         self.fails=0
         self.testcases= {"sym":["check syms", TestSym().testsym],"num":["check nums", TestNum().testnum],"rand":["generate, reset, regenerate same",TestRand(self.the["seed"]).testrand],
         "the":["show settings",TestThe(self.the).testthe], "csv":["read from csv",TestCSV(self.the["file"]).testcsv],  "data":["read DATA csv",TestData().testdata], "stats": ["stats from DATA",TestStats().teststats], 
-        "clone":["duplicate structure",TestClone().testdataclone]}
+        "clone":["duplicate structure",TestClone().testdataclone], "around":["sorting nearest neighbors", TestAround().testaround]}
         
     def concat(self, help):
         self.help+=help

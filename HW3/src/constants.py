@@ -9,6 +9,10 @@ constants = {
                     " -g  --go    start-up action      = data\n"
                     " -h  --help  show help            = false\n"
                     " -s  --seed  random number seed   = 937162211\n"
+                    " -F  --Far     distance to faraway  = .95\n"
+                    " -m  --min     stop clusters at N^min = .5\n"
+                    " -p  --p       distance coefficient   = 2\n"
+                    " -S  --Sample  sampling data size     = 512\n"
                     "ACTIONS:\n"
     )
 }

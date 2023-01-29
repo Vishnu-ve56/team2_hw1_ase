@@ -2,8 +2,8 @@ from src.csv import csv
 from src.rows import Row
 from src.cols import Col
 
-from src.globals import kap,map,mapNew
-
+from src.globals import kap,userdefinedmap,mapNew, rnd
+from src.misc import Misc
 import math
 
 class Data:
@@ -36,7 +36,26 @@ class Data:
         data = Data(self.cols.names)
         mapNew(init,data.add)
         return data
+    
+    
+    def dist(self, row1, row2, cols):
+        misc = Misc()
+        the= misc.getThe()
+        n,d = 0,0
+        
+        for _,col in enumerate(cols or self.cols.x):
+            n+=1
+            d+=col.dist(row1.cells[col.at],row2.cells[col.at])**the["p"]
+        return (d/n) ** (1/the["p"])
 
+    def around(self, row1,rows = None,cols = None):
+        def fun(row2):
+            return [row2, self.dist(row1, row2, cols)]
+        
+        val = list(map(fun, rows or self.rows))
+
+        val = sorted(val, key=lambda x: x[1])
+        return val
     # def better(self, row1,row2):
     #     s1,s2,ys = 0,0,self.cols.y
     #     for _,col in enumerate(ys):

@@ -35,5 +35,11 @@ class SYM:
         return x
 
     def dist(self, s1, s2):
-        return s1 == "?" and s2 == "?" and 1 or (s1==s2) and 0 or 1
+        if s1 == "?" and s2 == "?":
+            return 1
+        else:
+            if s1 == s2:
+                return 0
+            else:
+                return 1
 

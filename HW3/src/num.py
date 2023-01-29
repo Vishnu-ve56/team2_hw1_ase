@@ -36,7 +36,7 @@ class NUM:
         if x=="?":
             return x
         else:
-            rnd(x,n)
+            return rnd(x,n)
 
     def norm(self, n):
         return n=="?" and n or (n-self.lo)/(self.hi-self.lo + 1e-32)
