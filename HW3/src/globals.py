@@ -29,10 +29,16 @@ def kap(t,fun):
 def map(t, fun):
     u={}
     for k,v in enumerate(t):
-        v,k = fun(k,v)
+        v,k = fun(v)
         u[k or 1+len(u)] = v
     return u
 
+def mapNew(t, fun):
+    if(type(t[0]) == str):
+        fun(t)
+    else:
+        for row in t:
+            fun(row)
 
 
 def oo(t):
