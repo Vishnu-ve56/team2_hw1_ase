@@ -100,7 +100,6 @@ class Data:
             y = col.norm(row2.cells[col.at])
             s1 = s1 - math.exp(col.w * (x-y)/len(ys))
             s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
-            print(s1,s2)
         return s1 < s2
     
 
@@ -146,7 +145,6 @@ class Data:
             left, right, node["A"],node["B"], node["mid"],c = self.half(rows,cols,above)
 
             if self.better(node["B"],node["A"]):
-                print("Hiiii")
                 left,right,node['A'],node["B"] = right,left,node['B'],node["A"]
             node["left"] = self.sway(left,min,cols,node["A"])
         
@@ -159,18 +157,5 @@ class Data:
 
 
 
-# local node,left,right,A,B,mid
-#   rows = rows or i.rows
-#   min  = min or (#rows)^the.min
-#   cols = cols or i.cols.x
-#   node = {data=i:clone(rows)} --xxx cloning
-#   if #rows > 2*min then
-#     left, right, node.A, node.B, node.mid = i:half(rows,cols,above)
-#     if i:better(node.B,node.A) then left,right,node.A,node.B = right,left,node.B,node.A end
-#     node.left  = i:sway(left,  min, cols, node.A) end
-#   return node end
 
-data = Data("../data/auto93.csv")
-# show(data.cluster(),"mid",data.cols.y,1)
-# show(data.sway(),"mid",data.cols.y,1)
 
