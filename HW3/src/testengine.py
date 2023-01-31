@@ -8,6 +8,7 @@ from test.test_stats import TestStats
 from test.test_dataclone import TestClone
 from test.test_around import TestAround
 from test.test_half import TestHalf
+from test.test_cluster import TestCluster
 
 class testengine:
     def __init__(self,the):
@@ -16,7 +17,8 @@ class testengine:
         self.fails=0
         self.testcases= {"sym":["check syms", TestSym().testsym],"num":["check nums", TestNum().testnum],"rand":["generate, reset, regenerate same",TestRand(self.the["seed"]).testrand],
         "the":["show settings",TestThe(self.the).testthe], "csv":["read from csv",TestCSV(self.the["file"]).testcsv],  "data":["read DATA csv",TestData().testdata], "stats": ["stats from DATA",TestStats().teststats], 
-        "clone":["duplicate structure",TestClone().testdataclone], "around":["sorting nearest neighbors", TestAround().testaround], "half":["1-level bi-clustering",TestHalf().testhalf]}
+        "clone":["duplicate structure",TestClone().testdataclone], "around":["sorting nearest neighbors", TestAround().testaround], "half":["1-level bi-clustering",TestHalf().testhalf],
+        "cluster":["N-Level bi-clustering", TestCluster().testcluster]}
         
     def concat(self, help):
         self.help+=help

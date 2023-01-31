@@ -1,5 +1,5 @@
 from src.data import Data
-from src.globals import rnd,o
+from src.globals import *
 
 class TestAround:
     def testaround(self):

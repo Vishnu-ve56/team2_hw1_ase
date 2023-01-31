@@ -70,6 +70,21 @@ def o(t):
 
 Seed=937162211
 
+# def putSeed():
+#     global Seed
+#     f=open("seed.txt","w")
+#     f.write(str(Seed))
+#     f.close()
+
+# def setSeed():
+#     global Seed
+#     f=open("seed.txt","r")
+#     contents=f.read()
+#     Seed=int(contents)
+#     print(Seed)
+#     f.close()
+
+
 def rand(lo, hi=None):
     global Seed
     lo, hi = lo or 0, hi or 1
@@ -82,7 +97,11 @@ def rint(lo, hi= None):
 def cosine(a,b,c):
     x1 = (a**2 + c**2 - b**2)/(2*c)
     x2 = max(0,min(1,x1))
+    # print("a",a,"x2",x2)
     y = (a**2 - x2**2)**0.5
+    # print("y",y)
+    if type(y)==complex:
+        y=0
     return x2,y
 
 
@@ -95,3 +114,13 @@ def many(t,n ):
 
 def any(t):
     return t[rint(len(t))-1]
+
+def show(node, what, cols, nPlaces,lvl=0):
+    if node:
+        string=lvl*"|" + str(len(node["data"].rows)) + "  "
+        if node["left"]==None or lvl==0:
+            print(string, o(node["data"].stats("mid", node["data"].cols.y, nPlaces)))
+        else:
+            print(string, "")
+        show(node["left"],what,cols,nPlaces,lvl+1)
+        show(node["right"],what,cols,nPlaces,lvl+1)

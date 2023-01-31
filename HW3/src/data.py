@@ -71,7 +71,7 @@ class Data:
         listIndice = int((the["Far"] * len(rows))//1)
         
 
-        B = self.around(A,some)[listIndice-1][0]
+        B = self.around(A,some)[listIndice][0]
 
         c = dist(A,B)
 
@@ -89,7 +89,7 @@ class Data:
                 mid = values[0]
             else:
                 right.append(values[0])
-            
+        
 
         return left, right, A, B, mid, c
 
@@ -105,6 +105,8 @@ class Data:
 
 
     # def cluster(self, rows, min, cols, above):
+    #     misc=Misc()
+    #     the=misc.getThe()
     #     rows = rows or self.rows
     #     min = min or len(rows)^the.min
     #     cols = cols or self.cols.x
@@ -115,7 +117,37 @@ class Data:
     #             left,right,node.A,node.B = right,left,node.B,node.A
     #         node.left  = self.sway(left,  min, cols, node.A)
     #     return node
+    def cluster(self, rows=None, min=None, cols=None, above=None):
+        misc=Misc()
+        the=misc.getThe()
+        rows=rows or self.rows
+        min=min or len(rows)**the["min"]
+        cols=cols or self.cols.x
+        node = {"data": self.clone(rows)}
+        if len(rows)> 2*min:
+            left, right, node["A"],node["B"], node["mid"],c = self.half(rows,cols,above)
+            node["left"]=self.cluster(left,min,cols,node["A"])
+            node["right"]=self.cluster(right,min,cols,node["B"])
+        if "left" not in node:
+            node["left"]=None
+        if "right" not in node:
+            node["right"]=None   
+        return node
 
     def sway(self, rows, min, cols, above):
+
         pass
 
+# local node,left,right,A,B,mid
+#   rows = rows or i.rows
+#   min  = min or (#rows)^the.min
+#   cols = cols or i.cols.x
+#   node = {data=i:clone(rows)} --xxx cloning
+#   if #rows > 2*min then
+#     left, right, node.A, node.B, node.mid = i:half(rows,cols,above)
+#     if i:better(node.B,node.A) then left,right,node.A,node.B = right,left,node.B,node.A end
+#     node.left  = i:sway(left,  min, cols, node.A) end
+#   return node end
+
+# data = Data("../data/auto93.csv")
+# show(data.cluster(),"mid",data.cols.y,1)
