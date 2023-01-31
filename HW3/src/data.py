@@ -71,7 +71,7 @@ class Data:
         listIndice = int((the["Far"] * len(rows))//1)
         
 
-        B = self.around(A,some)[listIndice][0]
+        B = self.around(A,some)[listIndice-1][0]
 
         c = dist(A,B)
 
@@ -93,14 +93,15 @@ class Data:
 
         return left, right, A, B, mid, c
 
-    # def better(self, row1,row2):
-    #     s1,s2,ys = 0,0,self.cols.y
-    #     for _,col in enumerate(ys):
-    #         x = col.norm(row1.cells[col.at])
-    #         y = col.norm(row2.cells[col.at])
-    #         s1 = s1 - math.exp(col.w * (x-y)/len(ys))
-    #         s2 = s2 - math.exp(col.w * (x-y)/len(ys))
-    #     return s1/len(ys) < s2/len(ys)
+    def better(self, row1,row2):
+        s1,s2,ys = 0,0,self.cols.y
+        for _,col in enumerate(ys):
+            x = col.norm(row1.cells[col.at])
+            y = col.norm(row2.cells[col.at])
+            s1 = s1 - math.exp(col.w * (x-y)/len(ys))
+            s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
+            print(s1,s2)
+        return s1 < s2
     
 
 
@@ -134,9 +135,29 @@ class Data:
             node["right"]=None   
         return node
 
-    def sway(self, rows, min, cols, above):
+    def sway(self, rows = None, min = None, cols = None, above = None):
+        rows = rows or self.rows
+        misc=Misc()
+        the=misc.getThe()
+        min = min or len(rows)**the["min"]
+        cols = cols or self.cols.x
+        node = {"data": self.clone(rows)}
+        if len(rows) > 2*min:
+            left, right, node["A"],node["B"], node["mid"],c = self.half(rows,cols,above)
 
-        pass
+            if self.better(node["B"],node["A"]):
+                print("Hiiii")
+                left,right,node['A'],node["B"] = right,left,node['B'],node["A"]
+            node["left"] = self.sway(left,min,cols,node["A"])
+        
+        if "left" not in node:
+            node["left"]=None
+        if "right" not in node:
+            node["right"]=None 
+        
+        return node
+
+
 
 # local node,left,right,A,B,mid
 #   rows = rows or i.rows
@@ -149,5 +170,7 @@ class Data:
 #     node.left  = i:sway(left,  min, cols, node.A) end
 #   return node end
 
-# data = Data("../data/auto93.csv")
+data = Data("../data/auto93.csv")
 # show(data.cluster(),"mid",data.cols.y,1)
+# show(data.sway(),"mid",data.cols.y,1)
+
