@@ -1,5 +1,7 @@
 import math
 import copy
+import re
+import json
 
 def rnd(n, places):
     mult=10**(places or 3)
@@ -128,3 +130,18 @@ def show(node, what, cols, nPlaces,lvl=0):
 
 def copyDefined(t):
     return copy.deepcopy(t)
+
+def dofile(file):
+    textfile = open(file, "r")
+    data = textfile.read()
+    x = re.search("return {(.*)}",data,re.DOTALL)
+    result = x.groups()[0].replace("=",":")
+    result = result.replace("\'","\"")
+    result =  result.replace("{","[")
+    result =  result.replace("}", "]")
+    result = result.replace('_','"_"')
+    result = re.sub(r'(\w+):',r'"\1":',result)
+    final  = "{" + result + "}"
+    mydict = eval(final)
+    textfile.close()
+    return mydict
