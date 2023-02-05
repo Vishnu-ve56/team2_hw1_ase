@@ -14,10 +14,7 @@ class Data:
             cs=csv(src)
             cs.readFromCsv(self.add)
         else:
-            try:
-                mapNew(src, self.add)
-            except:
-                map(self.add, src)
+            mapNew(src, self.add)
         
     def add(self, t):
         if self.cols:

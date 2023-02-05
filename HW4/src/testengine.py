@@ -11,6 +11,7 @@ from test.test_half import TestHalf
 from test.test_cluster import TestCluster
 from test.test_sway import TestSway
 from test.test_copy_new import TestCopy
+from test.test_repgrid import TestrepCols
 
 class testengine:
     def __init__(self,the):
@@ -23,9 +24,11 @@ class testengine:
         "cluster":["N-Level bi-clustering", TestCluster().testcluster],
         "optimize":["semi-supervised optimization", TestSway().testsway]}
         self.testcases.clear()
+        self.testcases["the"] = ["show settings",TestThe(self.the).testthe]
         self.testcases["copy"] = ["check copy", TestCopy().testcopy]
         self.testcases["num"] = ["check nums", TestNum().testnum]
         self.testcases["sym"] = ["check syms", TestSym().testsym]
+        self.testcases["repcols"] = ["checking repcols cluster", TestrepCols().testrepcols]
         
     def concat(self, help):
         self.help+=help

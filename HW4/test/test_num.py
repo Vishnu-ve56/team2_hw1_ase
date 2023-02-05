@@ -11,7 +11,3 @@ class TestNum:
         for i in inp:
             num.add(i)
         return 11/7 == num.mid() and rnd(num.div(),3) == 0.787
-
-# testNum = TestNum()
-
-# print(testNum.testnum())
