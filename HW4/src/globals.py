@@ -3,6 +3,7 @@ import copy
 import re
 import json
 
+
 def rnd(n, places):
     mult=10**(places or 3)
     return math.floor(n*mult + 0.5)/mult
@@ -145,3 +146,18 @@ def dofile(file):
     mydict = eval(final)
     textfile.close()
     return mydict
+
+def transpose(t):
+    u=[]
+    for i in range(len(t)):
+        u[i]=[]
+        for j in range(len(t)):
+            u[i][j]=t[j][i]
+    return u
+
+
+# eg("repcols","checking repcols", function(    t)
+#   t=repCols( dofile(the.file).cols )
+#   map(t.cols.all,oo) 
+#   map(t.rows,oo) 
+# end)"
