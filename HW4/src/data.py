@@ -37,6 +37,10 @@ class Data:
         mapNew(init,data.add)
         return data
     
+    def furthest(self,row1, rows,cols=None):
+        t=self.around(row1, rows,cols)
+        return t[len(t)-1]
+    
     
     def dist(self, row1, row2, cols):
         misc = Misc()
@@ -58,22 +62,19 @@ class Data:
         return val
 
     def half(self, rows = None, cols = None, above = None):
-        misc = Misc()
-        the = misc.getThe()
         def project(row):
-            return [row, cosine(dist(row,A),dist(row,B),c)]
+            x,y=cosine(dist(row,A),dist(row,B),c)
+            # row["x"] = row["x"] or x
+            # row["y"]=row["y"] or y
+            return [row,x,y]
+
         def dist(row1,row2):
             return self.dist(row1,row2,cols)
 
         rows = rows or self.rows
-        some = many(rows, the["Sample"])
-        A = above or any(some)
-        listIndice = int((the["Far"] * len(rows))//1)
-        
-
-        B = self.around(A,some)[listIndice-1][0]
-
-        c = dist(A,B)
+        A = above or any(rows)
+        B= self.furthest(A,rows)[0]
+        c=dist(A,B)
 
         val = list(map(project, rows))
         val = sorted(val, key=lambda x: x[1])
@@ -118,14 +119,11 @@ class Data:
     #         node.left  = self.sway(left,  min, cols, node.A)
     #     return node
     def cluster(self, rows=None, min=None, cols=None, above=None):
-        misc=Misc()
-        the=misc.getThe()
         rows=rows or self.rows
-        min=min or len(rows)**the["min"]
         cols=cols or self.cols.x
         node = {"data": self.clone(rows)}
-        if len(rows)> 2*min:
-            left, right, node["A"],node["B"], node["mid"],c = self.half(rows,cols,above)
+        if len(rows)>=2:
+            left, right, node["A"],node["B"], node["mid"],node["c"] = self.half(rows,cols,above)
             node["left"]=self.cluster(left,min,cols,node["A"])
             node["right"]=self.cluster(right,min,cols,node["B"])
         if "left" not in node:

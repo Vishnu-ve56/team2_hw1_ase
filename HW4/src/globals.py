@@ -4,7 +4,7 @@ import re
 import json
 
 
-def rnd(n, places):
+def rnd(n, places=None):
     mult=10**(places or 3)
     return math.floor(n*mult + 0.5)/mult
 
@@ -115,17 +115,20 @@ def many(t,n ):
         u.append(any(t))
     return u
 
+def last(t):
+    return t[len(t)-1]
 
 def any(t):
     return t[rint(len(t))-1]
 
-def show(node, what, cols, nPlaces,lvl=0):
+def show(node, what=0, cols=0, nPlaces=0,lvl=0):
     if node:
-        string=lvl*"|" + str(len(node["data"].rows)) + "  "
-        if node["left"]==None or lvl==0:
-            print(string, o(node["data"].stats("mid", node["data"].cols.y, nPlaces)))
+        string=lvl*"|" 
+        if node["left"]==None:
+            print(string,o(last(last(node["data"].rows).cells)))
         else:
-            print(string, "")
+            string1="%.f"%(rnd(100*node["c"]))
+            print(string,string1)
         show(node["left"],what,cols,nPlaces,lvl+1)
         show(node["right"],what,cols,nPlaces,lvl+1)
 

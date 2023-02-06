@@ -19,7 +19,7 @@ class repgrid:
         cols[0][len(cols[0])-1]="thingX"
         return Data(cols)
     
-    def repRows(t, rows, u):
+    def repRows(self,t, rows, u):
         rows = copyDefined(rows)
         for j,s in enumerate(rows[len(rows)-1]):
             rows[0][j] = rows[0]+":"+s
@@ -30,7 +30,7 @@ class repgrid:
                     row.append(u[len(u)-1])
         return Data(rows)
 
-    def repPlace(data):
+    def repPlace(self,data):
         n,g = 20,[]
         for i in range(n):
             g.append([])
@@ -48,3 +48,14 @@ class repgrid:
         for y in range(maxy):
             oo(g[y])
 
+    def repGrid(self,sfile):
+        t=dofile(sfile)
+        rows=self.repRows(t,transpose(t.cols))
+        cols=self.repCols(t.cols)
+        show(rows.cluster)
+        show(cols.cluster)
+        self.repPlace(rows)
+    
+
+    
+    
