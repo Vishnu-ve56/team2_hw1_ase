@@ -13,6 +13,7 @@ from test.test_sway import TestSway
 from test.test_copy_new import TestCopy
 from test.test_repgrid import TestrepCols
 from test.test_syno import TestSyno
+from test.test_reprows import Testreprows
 
 class testengine:
     def __init__(self,the):
@@ -29,8 +30,9 @@ class testengine:
         self.testcases["copy"] = ["check copy", TestCopy().testcopy]
         self.testcases["num"] = ["check nums", TestNum().testnum]
         self.testcases["sym"] = ["check syms", TestSym().testsym]
-        self.testcases["repcols"] = ["checking repcols cluster", TestrepCols().testrepcols]
-        self.testcases["synonyms"]=["checking reprows", TestSyno().testsyno]
+        self.testcases["repcols"] = ["checking repcols", TestrepCols().testrepcols]
+        self.testcases["synonyms"]=["checking repcols cluster", TestSyno().testsyno]
+        self.testcases["reprows"] = ["checking reprows", Testreprows().testreprows]
         
     def concat(self, help):
         self.help+=help

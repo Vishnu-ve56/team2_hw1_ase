@@ -19,15 +19,17 @@ class repgrid:
         cols[0][len(cols[0])-1]="thingX"
         return Data(cols)
     
-    def repRows(self,t, rows, u):
+    def repRows(self,t, rows):
         rows = copyDefined(rows)
         for j,s in enumerate(rows[len(rows)-1]):
-            rows[0][j] = rows[0]+":"+s
-            rows[len(rows)-1] = None
-            for n,row in enumerate(rows):
-                if n==0:
-                    u = t.rows[len(rows-n+1)]
-                    row.append(u[len(u)-1])
+            rows[0][j] = rows[0][j]+":"+s
+        rows.pop()
+        for n,row in enumerate(rows):
+            if n==0:
+                row.append("thingX")
+            else:
+                u = t['rows'][len(t['rows'])- n]
+                row.append(u[len(u)-1])
         return Data(rows)
 
     def repPlace(self,data):
@@ -55,7 +57,13 @@ class repgrid:
         show(rows.cluster)
         show(cols.cluster)
         self.repPlace(rows)
-    
+rp=repgrid()
+t=dofile('data/repgrid1.csv')
+rows=rp.repRows(t,transpose(t['cols']))
+for i in rows.cols.all:
+    oo(i.__dict__)
+for i in rows.rows:
+    oo(i.__dict__)
 
     
     

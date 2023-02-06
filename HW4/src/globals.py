@@ -150,14 +150,9 @@ def dofile(file):
     textfile.close()
     return mydict
 
-def transpose(t):
-    u=[]
-    for i in range(len(t)):
-        u[i]=[]
-        for j in range(len(t)):
-            u[i][j]=t[j][i]
-    return u
-
+def transpose(m):
+    rez = [[m[j][i] for j in range(len(m))] for i in range(len(m[0]))]
+    return rez
 
 # eg("repcols","checking repcols", function(    t)
 #   t=repCols( dofile(the.file).cols )
