@@ -14,6 +14,8 @@ from test.test_copy_new import TestCopy
 from test.test_repgrid import TestrepCols
 from test.test_syno import TestSyno
 from test.test_reprows import Testreprows
+from test.test_pro import TestPro
+from test.test_pos import TestPos
 
 class testengine:
     def __init__(self,the):
@@ -33,6 +35,8 @@ class testengine:
         self.testcases["repcols"] = ["checking repcols", TestrepCols().testrepcols]
         self.testcases["synonyms"]=["checking repcols cluster", TestSyno().testsyno]
         self.testcases["reprows"] = ["checking reprows", Testreprows().testreprows]
+        self.testcases["prototypes"]=["checking reprows cluster", TestPro().testpro]
+        self.testcases["position"]=["where's wally", TestPos().testpos]
         
     def concat(self, help):
         self.help+=help

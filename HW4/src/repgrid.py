@@ -34,7 +34,7 @@ class repgrid:
 
     def repPlace(self,data):
         n,g = 20,[]
-        for i in range(n):
+        for i in range(n+1):
             g.append([])
             for j in range(n):
                 g[i].append(" ")
@@ -43,8 +43,10 @@ class repgrid:
         for r,row in enumerate(data.rows):
             c=chr(65+r)
             print(c,row.cells[-1])
-            x,y=row.x*n//1,row.y*n//1
-            maxy = max(maxy,y)
+            x,y=row.x *n//1,row.y*n//1
+            x=int(x)
+            y=int(y)
+            maxy = max(maxy,y+1)
             g[y][x]=c
         print("")
         for y in range(maxy):
@@ -57,13 +59,8 @@ class repgrid:
         show(rows.cluster)
         show(cols.cluster)
         self.repPlace(rows)
-rp=repgrid()
-t=dofile('data/repgrid1.csv')
-rows=rp.repRows(t,transpose(t['cols']))
-for i in rows.cols.all:
-    oo(i.__dict__)
-for i in rows.rows:
-    oo(i.__dict__)
 
-    
-    
+
+
+
+
