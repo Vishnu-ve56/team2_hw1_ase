@@ -16,6 +16,7 @@ from test.test_syno import TestSyno
 from test.test_reprows import Testreprows
 from test.test_pro import TestPro
 from test.test_pos import TestPos
+from test.test_repgrid2 import TestRepGrid2
 
 class testengine:
     def __init__(self,the):
@@ -37,6 +38,7 @@ class testengine:
         self.testcases["reprows"] = ["checking reprows", Testreprows().testreprows]
         self.testcases["prototypes"]=["checking reprows cluster", TestPro().testpro]
         self.testcases["position"]=["where's wally", TestPos().testpos]
+        self.testcases["every"]=["the whole enchilada", TestRepGrid2().testrepgrid2]
         
     def concat(self, help):
         self.help+=help

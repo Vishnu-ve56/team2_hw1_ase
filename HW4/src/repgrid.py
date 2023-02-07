@@ -54,12 +54,11 @@ class repgrid:
 
     def repGrid(self,sfile):
         t=dofile(sfile)
-        rows=self.repRows(t,transpose(t.cols))
-        cols=self.repCols(t.cols)
-        show(rows.cluster)
-        show(cols.cluster)
+        rows=self.repRows(t,transpose(t['cols']))
+        cols=self.repCols(t['cols'])
+        show(rows.cluster())
+        show(cols.cluster())
         self.repPlace(rows)
-
 
 
 
