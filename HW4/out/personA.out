@@ -1,0 +1,188 @@
+{:Far 0.95 :Sample 512 :dump False :file ../data/auto93.csv :go ALL :help False :min 0.5 :p 2 :seed 937162211}
+✅ pass: the
+b4 {:a 1 :b {:c 2 :d {3}}} 
+after {:a 1 :b {:c 2 :d {1000}}}
+✅ pass: copy
+✅ pass: num
+✅ pass: sym
+{:a dict :at 0 :hi 5 :id 140301287962176 :lo 1 :m2 24.400000000000002 :mu 3.4000000000000004 :n 10 :txt Num0 :w 1}
+{:a dict :at 1 :hi 5 :id 140301287983376 :lo 1 :m2 16.1 :mu 3.3 :n 10 :txt Num1 :w 1}
+{:a dict :at 2 :hi 5 :id 140301287983696 :lo 1 :m2 18.1 :mu 3.6999999999999997 :n 10 :txt Num2 :w 1}
+{:a dict :at 3 :hi 5 :id 140301287983056 :lo 1 :m2 14.399999999999999 :mu 3.4 :n 10 :txt Num3 :w 1}
+{:a dict :at 4 :hi 5 :id 140301287983216 :lo 1 :m2 22.1 :mu 3.3 :n 10 :txt Num4 :w 1}
+{:a dict :at 5 :hi 5 :id 140301287983936 :lo 1 :m2 26.9 :mu 3.1 :n 10 :txt Num5 :w 1}
+{:a dict :at 6 :hi 5 :id 140301287171248 :lo 1 :m2 24.0 :mu 2.9999999999999996 :n 10 :txt Num6 :w 1}
+{:a dict :at 7 :hi 5 :id 140301288008112 :lo 1 :m2 22.099999999999998 :mu 2.7 :n 10 :txt Num7 :w 1}
+{:a dict :at 8 :hi 5 :id 140301287725168 :lo 1 :m2 20.9 :mu 3.1 :n 10 :txt Num8 :w 1}
+{:a dict :at 9 :hi 5 :id 140301287962416 :lo 1 :m2 17.6 :mu 2.2 :n 10 :txt Num9 :w 1}
+{:a dict :at 10 :has {} :id 140301287963056 :mode None :most 0 :n 0 :txt thingX}
+{:a dict :cells {5 5 5 5 5 1 2 2 4 1 Cheap:Expensive} :id 140301287961936 :x None :y None}
+{:a dict :cells {5 1 3 4 4 5 5 3 4 3 Electric:NonElectric} :id 140301287963136 :x None :y None}
+{:a dict :cells {4 4 5 3 2 4 2 1 4 1 breakdown:smooth} :id 140301287964336 :x None :y None}
+{:a dict :cells {1 3 3 3 5 4 1 1 1 1 big:small} :id 140301287964416 :x None :y None}
+{:a dict :cells {1 2 5 4 3 2 2 2 1 1 utility:sport} :id 140301287962096 :x None :y None}
+{:a dict :cells {2 2 2 3 3 5 5 5 4 2 luxury:nonLuxury} :id 140301287964576 :x None :y None}
+{:a dict :cells {5 4 1 1 1 1 4 4 4 4 notSosafe:Safe} :id 140301287962336 :x None :y None}
+{:a dict :cells {3 3 4 2 1 1 5 5 5 5 lowMileage:highMileage} :id 140301287981536 :x None :y None}
+{:a dict :cells {5 4 4 4 4 3 3 3 3 2 engineLife-:EngineLife+} :id 140301287981616 :x None :y None}
+{:a dict :cells {3 5 5 5 5 5 1 1 1 2 lowMaintenance:highMaintenance} :id 140301287963216 :x None :y None}
+✅ pass: repcols
+ 69
+| 50
+|| 32
+||| utility:sport
+||| big:small
+|| 45
+||| Cheap:Expensive
+||| 41
+|||| lowMaintenance:highMaintenance
+|||| breakdown:smooth
+| 56
+|| 34
+||| notSosafe:Safe
+||| lowMileage:highMileage
+|| 35
+||| Electric:NonElectric
+||| 45
+|||| engineLife-:EngineLife+
+|||| luxury:nonLuxury
+✅ pass: synonyms
+{:a dict :at 0 :hi 5 :id 140301288035664 :lo 1 :m2 28.499999999999993 :mu 3.4999999999999996 :n 10 :txt Cheap:Expensive :w 1}
+{:a dict :at 1 :hi 5 :id 140301288035824 :lo 1 :m2 14.099999999999998 :mu 3.6999999999999997 :n 10 :txt Electric:NonElectric :w 1}
+{:a dict :at 2 :has {:1 2 :2 2 :3 1 :4 4 :5 1} :id 140301288036464 :mode 4 :most 4 :n 10 :txt breakdown:smooth}
+{:a dict :at 3 :has {:1 5 :3 3 :4 1 :5 1} :id 140301288025856 :mode 1 :most 5 :n 10 :txt big:small}
+{:a dict :at 4 :has {:1 3 :2 4 :3 1 :4 1 :5 1} :id 140301288023296 :mode 2 :most 4 :n 10 :txt utility:sport}
+{:a dict :at 5 :has {:2 4 :3 2 :4 1 :5 3} :id 140301288024016 :mode 2 :most 4 :n 10 :txt luxury:nonLuxury}
+{:a dict :at 6 :has {:1 4 :4 5 :5 1} :id 140301288024256 :mode 4 :most 5 :n 10 :txt notSosafe:Safe}
+{:a dict :at 7 :has {:1 2 :2 1 :3 2 :4 1 :5 4} :id 140301288024576 :mode 5 :most 4 :n 10 :txt lowMileage:highMileage}
+{:a dict :at 8 :has {:2 1 :3 4 :4 4 :5 1} :id 140301288024896 :mode 4 :most 4 :n 10 :txt engineLife-:EngineLife+}
+{:a dict :at 9 :has {:1 3 :2 1 :3 1 :5 5} :id 140301288025216 :mode 5 :most 5 :n 10 :txt lowMaintenance:highMaintenance}
+{:a dict :at 10 :has {} :id 140301288025536 :mode None :most 0 :n 0 :txt thingX}
+{:a dict :cells {5 5 4 1 1 2 5 3 5 3 JeepWrangler} :id 140301287964416 :x None :y None}
+{:a dict :cells {5 1 4 3 2 2 4 3 4 5 TeslaModelS} :id 140301288139584 :x None :y None}
+{:a dict :cells {5 3 5 3 5 2 1 4 4 5 Porsche911} :id 140301288139664 :x None :y None}
+{:a dict :cells {5 4 3 3 4 3 1 2 4 5 MercedesBenzEClass} :id 140301288140064 :x None :y None}
+{:a dict :cells {5 4 2 5 3 3 1 1 4 5 BMW3Series} :id 140301288140144 :x None :y None}
+{:a dict :cells {1 5 4 4 2 5 1 1 3 5 NissanAltima} :id 140301288140304 :x None :y None}
+{:a dict :cells {2 5 2 1 2 5 4 5 3 1 ChevroletCamaro} :id 140301288140464 :x None :y None}
+{:a dict :cells {2 3 1 1 2 5 4 5 3 1 HondaCivic} :id 140301288140624 :x None :y None}
+{:a dict :cells {4 4 4 1 1 4 4 5 3 1 FordMustang} :id 140301288022096 :x None :y None}
+{:a dict :cells {1 3 1 1 1 2 4 5 2 2 ToyotaCorolla} :id 140301288022256 :x None :y None}
+✅ pass: reprows
+ 93
+| 75
+|| 37
+||| ChevroletCamaro
+||| HondaCivic
+|| 90
+||| NissanAltima
+||| 63
+|||| ToyotaCorolla
+|||| FordMustang
+| 83
+|| 67
+||| Porsche911
+||| MercedesBenzEClass
+|| 89
+||| JeepWrangler
+||| 85
+|||| BMW3Series
+|||| TeslaModelS
+✅ pass: prototypes
+
+A JeepWrangler
+B TeslaModelS
+C Porsche911
+D MercedesBenzEClass
+E BMW3Series
+F NissanAltima
+G ChevroletCamaro
+H HondaCivic
+I FordMustang
+J ToyotaCorolla
+
+{F                                 J    }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                      H                }
+{                                       }
+{                  G     I              }
+{                                       }
+{                B     A                }
+{          E     C                      }
+{            D                          }
+✅ pass: position
+ 95
+| 82
+|| 67
+||| MercedesBenzEClass
+||| Porsche911
+|| 82
+||| NissanAltima
+||| 85
+|||| TeslaModelS
+|||| BMW3Series
+| 76
+|| 58
+||| ToyotaCorolla
+||| HondaCivic
+|| 85
+||| JeepWrangler
+||| 61
+|||| ChevroletCamaro
+|||| FordMustang
+ 52
+| 46
+|| 27
+||| engineLife-:EngineLife+
+||| Cheap:Expensive
+|| 45
+||| big:small
+||| 41
+|||| breakdown:smooth
+|||| lowMaintenance:highMaintenance
+| 64
+|| 34
+||| lowMileage:highMileage
+||| notSosafe:Safe
+|| 58
+||| utility:sport
+||| 34
+|||| Electric:NonElectric
+|||| luxury:nonLuxury
+
+A JeepWrangler
+B TeslaModelS
+C Porsche911
+D MercedesBenzEClass
+E BMW3Series
+F NissanAltima
+G ChevroletCamaro
+H HondaCivic
+I FordMustang
+J ToyotaCorolla
+
+{D                                   J  }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                                       }
+{                            H          }
+{                          I            }
+{        E   C             G            }
+{                B     A                }
+{                F                      }
+✅ pass: every
+
+Number of failed tests:  0
