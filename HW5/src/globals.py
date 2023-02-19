@@ -155,12 +155,6 @@ def transpose(m):
     rez = [[m[j][i] for j in range(len(m))] for i in range(len(m[0]))]
     return rez
 
-# eg("repcols","checking repcols", function(    t)
-#   t=repCols( dofile(the.file).cols )
-#   map(t.cols.all,oo) 
-#   map(t.rows,oo) 
-# end)"
-
 def cliffsDelta(ns1, ns2):
     if ns1>256:
         ns1=many(ns1,256)
@@ -179,7 +173,6 @@ def cliffsDelta(ns1, ns2):
             if x<y:
                 lt+=1
     obj= Misc()
-    return math.abs(lt-gt)/n > obj.getThe().cliffs
+    return math.abs(lt-gt)/n > obj.getThe()["cliffs"]
 
-def diffs(nums1, nums2):
-    return kap(nums1,lambda k,nums: cliffsDelta(nums.has,nums2[k].has),nums.txt)
+
