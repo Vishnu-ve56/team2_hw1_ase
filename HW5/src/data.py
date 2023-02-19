@@ -132,28 +132,19 @@ class Data:
             node["right"]=None   
         return node
 
-    def sway(self, rows = None, min = None, cols = None, above = None):
-        rows = rows or self.rows
-        misc=Misc()
-        the=misc.getThe()
-        min = min or len(rows)**the["min"]
-        cols = cols or self.cols.x
-        node = {"data": self.clone(rows)}
-        if len(rows) > 2*min:
-            left, right, node["A"],node["B"], node["mid"],c = self.half(rows,cols,above)
-
-            if self.better(node["B"],node["A"]):
-                left,right,node['A'],node["B"] = right,left,node['B'],node["A"]
-            node["left"] = self.sway(left,min,cols,node["A"])
-        
-        if "left" not in node:
-            node["left"]=None
-        if "right" not in node:
-            node["right"]=None 
-        
-        return node
-
-
-
-
-
+    
+    def sway(self):
+        misc = Misc()
+        the= misc.getThe()
+        def worker(rows,worse,above=None):
+            if len(rows) <= len(self.rows)**the['min']:
+                return rows, many(worse, the["rest"]*len(rows))
+            else:
+                l,r,A,B,_,_ = self.half(rows,None,above)
+                if self.better(B,A):
+                    l,r,A,B = r,l,B,A
+                for i in r:
+                    worse.append(i)
+                return worker(l,worse,A)
+        best,rest = worker(self.rows,[])
+        return self.clone(best),self.clone(rest)
