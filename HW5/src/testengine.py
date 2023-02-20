@@ -13,7 +13,6 @@ from test.test_sway import TestSway
 from test.test_copy_new import TestCopy
 from test.test_discretize import TestDiscretize
 
-from globals import Seed
 
 class testengine:
     def __init__(self,the):
