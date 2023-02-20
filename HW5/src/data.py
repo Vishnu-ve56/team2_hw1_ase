@@ -62,19 +62,22 @@ class Data:
         return val
 
     def half(self, rows = None, cols = None, above = None):
+        misc = Misc()
+        the = misc.getThe()
         def project(row):
-            x,y=cosine(dist(row,A),dist(row,B),c)
-            row.x = row.x or x
-            row.y=row.y or y
-            return [row,x,y]
-
+            return [row, cosine(dist(row,A),dist(row,B),c)]
         def dist(row1,row2):
             return self.dist(row1,row2,cols)
 
         rows = rows or self.rows
-        A = above or any(rows)
-        B= self.furthest(A,rows)[0]
-        c=dist(A,B)
+        some = many(rows, the["Halves"])
+        A = above or any(some)
+        listIndice = int((the["Far"] * len(rows))//1)
+        
+
+        B = self.around(A,some)[listIndice][0]
+
+        c = dist(A,B)
 
         val = list(map(project, rows))
         val = sorted(val, key=lambda x: x[1])
@@ -105,19 +108,6 @@ class Data:
     
 
 
-    # def cluster(self, rows, min, cols, above):
-    #     misc=Misc()
-    #     the=misc.getThe()
-    #     rows = rows or self.rows
-    #     min = min or len(rows)^the.min
-    #     cols = cols or self.cols.x
-    #     node = {data : self.clone(rows)}
-    #     if len(rows) > 2*min:
-    #         left, right, node.A, node.B, node.mid = self.half(rows, cols, above)
-    #         if self.better(node.B, node.A):
-    #             left,right,node.A,node.B = right,left,node.B,node.A
-    #         node.left  = self.sway(left,  min, cols, node.A)
-    #     return node
     def cluster(self, rows=None, min=None, cols=None, above=None):
         rows=rows or self.rows
         cols=cols or self.cols.x

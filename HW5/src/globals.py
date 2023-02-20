@@ -2,7 +2,6 @@ import math
 import copy
 import re
 import json
-from misc import Misc
 
 
 def rnd(n, places=None):
@@ -100,11 +99,10 @@ def rint(lo, hi= None):
     return math.floor(0.5 + rand(lo, hi))
 
 def cosine(a,b,c):
-    x1 = (a**2 + c**2 - b**2)/(2*c)
+    den = 1 if c == 0 else 2*c
+    x1 = (a**2 + c**2 - b**2)/den
     x2 = max(0,min(1,x1))
-    # print("a",a,"x2",x2)
     y = (a**2 - x2**2)**0.5
-    # print("y",y)
     if type(y)==complex:
         y=0
     return x2,y
@@ -120,7 +118,7 @@ def last(t):
     return t[len(t)-1]
 
 def any(t):
-    return t[rint(len(t))-1]
+    return t[rint(0, len(t) - 1)]
 
 def show(node, what=0, cols=0, nPlaces=0,lvl=0):
     if node:
@@ -155,24 +153,5 @@ def transpose(m):
     rez = [[m[j][i] for j in range(len(m))] for i in range(len(m[0]))]
     return rez
 
-def cliffsDelta(ns1, ns2):
-    if ns1>256:
-        ns1=many(ns1,256)
-    if ns2>256:
-        ns2=many(ns2,256)
-    if ns1>10*len(ns2):
-        ns1=many(ns1,10*len(ns2))
-    if ns2>10*len(ns1):
-        ns2=many(ns2,10*len(ns1))
-    n, gt, lt=0, 0, 0
-    for a,x in enumerate(ns1):
-        for b,y in enumerate(ns2):
-            n=n+1
-            if x>y:
-                gt+=1
-            if x<y:
-                lt+=1
-    obj= Misc()
-    return math.abs(lt-gt)/n > obj.getThe()["cliffs"]
 
 

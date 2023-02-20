@@ -11,12 +11,9 @@ from test.test_half import TestHalf
 from test.test_cluster import TestCluster
 from test.test_sway import TestSway
 from test.test_copy_new import TestCopy
-from test.test_repgrid import TestrepCols
-from test.test_syno import TestSyno
-from test.test_reprows import Testreprows
-from test.test_pro import TestPro
-from test.test_pos import TestPos
-from test.test_repgrid2 import TestRepGrid2
+from test.test_discretize import TestDiscretize
+
+from globals import Seed
 
 class testengine:
     def __init__(self,the):
@@ -33,13 +30,13 @@ class testengine:
         self.testcases["copy"] = ["check copy", TestCopy().testcopy]
         self.testcases["num"] = ["check nums", TestNum().testnum]
         self.testcases["sym"] = ["check syms", TestSym().testsym]
-        self.testcases["repcols"] = ["checking repcols", TestrepCols().testrepcols]
-        self.testcases["synonyms"]=["checking repcols cluster", TestSyno().testsyno]
-        self.testcases["reprows"] = ["checking reprows", Testreprows().testreprows]
-        self.testcases["prototypes"]=["checking reprows cluster", TestPro().testpro]
-        self.testcases["position"]=["where's wally", TestPos().testpos]
-        self.testcases["every"]=["the whole enchilada", TestRepGrid2().testrepgrid2]
-        
+        self.testcases["csv"] = ["read from csv",TestCSV(self.the["file"]).testcsv]
+        self.testcases["data"] = ["read DATA csv",TestData().testdata]
+        self.testcases["clone"] = ["duplicate structure",TestClone().testdataclone]
+        self.testcases["around"] = ["sorting nearest neighbors", TestAround().testaround]
+        self.testcases["half"] = ["1-level bi-clustering",TestHalf().testhalf]
+        self.testcases["optimize"] = ["semi-supervised optimization", TestSway().testsway]
+        self.testcases["bins"] = ["find deltas between best and rest", TestDiscretize().testdiscretize]
     def concat(self, help):
         self.help+=help
         for i in self.testcases:
