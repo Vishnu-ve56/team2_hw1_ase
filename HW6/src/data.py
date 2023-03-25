@@ -4,6 +4,7 @@ from src.cols import Col
 
 from src.globals import *
 from src.misc import Misc
+from discretization import bins
 import math
 
 class Data:
@@ -138,3 +139,57 @@ class Data:
                 return worker(l,worse,A)
         best,rest = worker(self.rows,[])
         return self.clone(best),self.clone(rest)
+    def xpln(data, best, rest):
+        def v(has):
+            return value(has, len(best.rows), len(rest.rows), "best")
+
+        def score(self,ranges):
+            rule = self.RULE(ranges, maxSizes)
+            if rule:
+                oo(self.showRule(rule))
+                bestr = self.selects(rule, best.rows)
+                restr = self.selects(rule, rest.rows)
+                if len(bestr) + len(restr) > 0:
+                    return v({"best": len(bestr), "rest": len(restr)}), rule
+
+        tmp = []
+        maxSizes = {}
+        # for ranges in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}).values():
+        for ranges in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}):
+            maxSizes[ranges[0]['txt']] = len(ranges)
+            print("")
+            for range in ranges:
+                print(range['txt'], range['lo'], range['hi'])
+                tmp.append({"range": range, "max": len(ranges), "val": v(range['y'].has)})
+        rule, most = firstN(sorted(tmp, key=lambda x: x["val"], reverse=True), score)
+        return rule, most
+
+    def selects(self, rule, rows):
+        def disjunction(ranges, row):
+            for range in ranges:
+                lo, hi, at = range["lo"], range["hi"], range["at"]
+                x = row.cells[at]
+                if x == "?":
+                    return True
+                if lo == hi and lo == x:
+                    return True
+                if lo <= x and x < hi:
+                    return True
+            return False
+
+        def conjunction(row):
+            # for ranges in rule:
+            for ranges in rule.values():
+                if not disjunction(ranges, row):
+                    return False
+            return True
+
+        return list(filter(lambda r: r is not None, map(lambda r: r if conjunction(r) else None, rows)))
+
+    def RULE(self,ranges, maxSize):
+        t = {}
+        for range in ranges:
+            if range["txt"] not in t:
+                t[range["txt"]] = []
+            t[range["txt"]].append({"lo": range["lo"], "hi": range["hi"], "at": range["at"]})
+        return prune(t, maxSize)

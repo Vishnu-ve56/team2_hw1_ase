@@ -153,5 +153,45 @@ def transpose(m):
     rez = [[m[j][i] for j in range(len(m))] for i in range(len(m[0]))]
     return rez
 
+def firstN(sortedRanges, scoreFun):
+    print("")
+    for r in sortedRanges:
+        print(r["range"]["txt"], r["range"]["lo"], r["range"]["hi"], rnd(r["val"]), o(r["range"]["y"].has))
 
+    first = sortedRanges[0]["val"]
 
+    def useful(range):
+        if range["val"] > 0.05 and range["val"] > first / 10:
+            return range
+
+    sortedRanges = list(filter(lambda r: r is not None, map(useful, sortedRanges)))
+    most, out = -1, -1
+
+    for n in range(1, len(sortedRanges) + 1):
+        tmp, rule = scoreFun(list(map(lambda r: r["range"], sortedRanges[:n])))
+        if tmp and tmp > most:
+            out, most = rule, tmp
+
+    return out, most
+def value(has, nB, nR, sGoal=None):
+    sGoal, nB, nR = sGoal or True, nB or 1, nR or 1
+    b, r = 0, 0
+
+    for x, n in has.items():
+        if x == sGoal:
+            b += n
+        else:
+            r += n
+
+    b, r = b / (nB + 1 / float("inf")), r / (nR + 1 / float("inf"))
+    return b ** 2 / (b + r)
+
+def prune(rule, maxSize):
+    n = 0
+    for txt, ranges in rule.items():
+        n += 1
+        if len(ranges) == maxSize[txt]:
+            n -= 1
+            del rule[txt]
+    if n > 0:
+        return rule
