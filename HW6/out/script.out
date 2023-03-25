@@ -1,0 +1,44 @@
+{:Far 0.95 :Halves 512 :Max 512 :Reuse True :bins 16 :cliffs 0.147 :file ../data/auto93.csv :go ALL :help False :min 0.5 :p 2 :rest 4 :seed 937162211}
+✅ pass: the
+b4 {:a 1 :b {:c 2 :d {3}}} 
+after {:a 1 :b {:c 2 :d {1000}}}
+✅ pass: copy
+✅ pass: num
+✅ pass: sym
+✅ pass: csv
+✅ pass: data
+✅ pass: clone
+0 0 {8 304 193 4732 18.5 70 1 10}
+50 	 0.17 	 {8 318 150 4457 13.5 74 1 10}
+100 	 0.28 	 {6 232 100 2901 16 74 1 20}
+150 	 0.38 	 {8 351 142 4054 14.3 79 1 20}
+200 	 0.55 	 {4 122 96 2300 15.5 77 1 30}
+250 	 0.68 	 {4 119 82 2720 19.4 82 1 30}
+300 	 0.71 	 {4 119 97 2545 17 75 3 20}
+350 	 0.79 	 {4 146 67 3250 21.8 80 2 30}
+✅ pass: around
+199 199 398
+{4 90 71 2223 16.5 75 2 30} 0.6820450147798408
+{4 112 88 2395 18 82 1 30}
+{8 260 110 4060 19 77 1 20}
+✅ pass: half
+✅ pass: optimize
+all    {'best': 12, 'rest': 48}
+Clndrs -inf 4 0.556 {'best': 10, 'rest': 20}
+Clndrs 4 5 0.167 {'best': 2}
+Clndrs 5 inf 0.0 {'rest': 11}
+
+Volume -inf 156 0.309 {'best': 5, 'rest': 7}
+Volume 156 183 0.067 {'best': 1, 'rest': 1}
+Volume 183 inf 0.0 {'rest': 4}
+
+Model -inf 81 0.024 {'rest': 10, 'best': 1}
+Model 81 inf 0.0 {'rest': 4}
+
+origin 1 1 0.113 {'best': 4, 'rest': 31}
+origin 2 2 0.577 {'best': 8, 'rest': 5}
+origin 3 3 0.0 {'rest': 12}
+
+✅ pass: bins
+
+Number of failed tests:  0
