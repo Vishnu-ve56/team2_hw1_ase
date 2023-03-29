@@ -169,7 +169,6 @@ def firstN(sortedRanges, scoreFun):
 
     for n in range(1, len(sortedRanges) + 1):
         ranges = list(map(lambda r: r["range"], sortedRanges[:n]))
-        print( "ranges", ranges)
         tmp, rule = scoreFun(ranges)
         if tmp and tmp > most:
             out, most = rule, tmp
