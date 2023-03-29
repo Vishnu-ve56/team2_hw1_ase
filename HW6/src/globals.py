@@ -168,11 +168,21 @@ def firstN(sortedRanges, scoreFun):
     most, out = -1, -1
 
     for n in range(1, len(sortedRanges) + 1):
-        tmp, rule = scoreFun(list(map(lambda r: r["range"], sortedRanges[:n])))
+        ranges = list(map(lambda r: r["range"], sortedRanges[:n]))
+        print( "ranges", ranges)
+        tmp, rule = scoreFun(ranges)
         if tmp and tmp > most:
             out, most = rule, tmp
 
     return out, most
+
+def dictionaryKap(t, fun):
+    u = {}
+    for k,v in t.items():
+        v, k = fun(k,v) 
+        u[k or len(u)] = v
+    return u
+
 def value(has, nB, nR, sGoal=None):
     sGoal, nB, nR = sGoal or True, nB or 1, nR or 1
     b, r = 0, 0

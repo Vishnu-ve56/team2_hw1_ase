@@ -5,6 +5,7 @@ from src.cols import Col
 from src.globals import *
 from src.misc import Misc
 from src.discretization import bins
+from operator import itemgetter
 import math
 
 class Data:
@@ -109,6 +110,9 @@ class Data:
             s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
         return s1 < s2
     
+    def betters(self, n):
+        tmp = sorted(self.rows, key=lambda row: self.better(row, self.rows[self.rows.index(row) - 1]))
+        return n and tmp[0:n], tmp[n + 1:] or tmp
 
 
     def cluster(self, rows=None, min=None, cols=None, above=None):
@@ -141,11 +145,33 @@ class Data:
                 return worker(l,worse,evals+evalsZ,A)
         best,rest, evals = worker(self.rows,[],0)
         return self.clone(best),self.clone(rest), evals
-    def xpln(data, best, rest):
+    
+    def showRule(self, rule):
+        def pretty(range):
+            return range['lo'] if range['lo']==range['hi'] else [range['lo'], range['hi']]
+        def merges(attr,ranges):
+            return list(map(pretty,merge(sorted(ranges,key=itemgetter('lo'))))),attr
+        def merge(t0):
+            t,j =[],1
+            left = None
+            right = None
+            while j<=len(t0):
+                left = t0[j-1]
+                right  = t0[j] if j < len(t0) else None
+                if right and left["hi"] == right["lo"]:
+                    left['hi'] = right["hi"]
+                    j  = j + 1
+                t.append({'lo':left['lo'], 'hi':left['hi']})
+                j=j+1
+            return t if len(t0)==len(t) else merge(t) 
+        return dictionaryKap(rule,merges)
+    
+
+    def xpln(self, best, rest):
         def v(has):
             return value(has, len(best.rows), len(rest.rows), "best")
 
-        def score(self,ranges):
+        def score(ranges):
             rule = self.RULE(ranges, maxSizes)
             if rule:
                 oo(self.showRule(rule))
@@ -156,8 +182,7 @@ class Data:
 
         tmp = []
         maxSizes = {}
-        # for ranges in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}).values():
-        for ranges in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}):
+        for ranges in bins(self.cols.x, {"best": best.rows, "rest": rest.rows}):
             maxSizes[ranges[0]['txt']] = len(ranges)
             print("")
             for range in ranges:
