@@ -12,6 +12,7 @@ from test.test_cluster import TestCluster
 from test.test_sway import TestSway
 from test.test_copy_new import TestCopy
 from test.test_discretize import TestDiscretize
+from test.test_xpln import TestXpln
 
 
 class testengine:
@@ -25,17 +26,18 @@ class testengine:
         "cluster":["N-Level bi-clustering", TestCluster().testcluster],
         "optimize":["semi-supervised optimization", TestSway().testsway]}
         self.testcases.clear()
-        self.testcases["the"] = ["show settings",TestThe(self.the).testthe]
-        self.testcases["copy"] = ["check copy", TestCopy().testcopy]
-        self.testcases["num"] = ["check nums", TestNum().testnum]
-        self.testcases["sym"] = ["check syms", TestSym().testsym]
-        self.testcases["csv"] = ["read from csv",TestCSV(self.the["file"]).testcsv]
-        self.testcases["data"] = ["read DATA csv",TestData().testdata]
-        self.testcases["clone"] = ["duplicate structure",TestClone().testdataclone]
-        self.testcases["around"] = ["sorting nearest neighbors", TestAround().testaround]
-        self.testcases["half"] = ["1-level bi-clustering",TestHalf().testhalf]
-        self.testcases["optimize"] = ["semi-supervised optimization", TestSway().testsway]
-        self.testcases["bins"] = ["find deltas between best and rest", TestDiscretize().testdiscretize]
+        # self.testcases["the"] = ["show settings",TestThe(self.the).testthe]
+        # self.testcases["copy"] = ["check copy", TestCopy().testcopy]
+        # self.testcases["num"] = ["check nums", TestNum().testnum]
+        # self.testcases["sym"] = ["check syms", TestSym().testsym]
+        # self.testcases["csv"] = ["read from csv",TestCSV(self.the["file"]).testcsv]
+        # self.testcases["data"] = ["read DATA csv",TestData().testdata]
+        # self.testcases["clone"] = ["duplicate structure",TestClone().testdataclone]
+        # self.testcases["around"] = ["sorting nearest neighbors", TestAround().testaround]
+        # self.testcases["half"] = ["1-level bi-clustering",TestHalf().testhalf]
+        # self.testcases["optimize"] = ["semi-supervised optimization", TestSway().testsway]
+        # self.testcases["bins"] = ["find deltas between best and rest", TestDiscretize().testdiscretize]
+        self.testcases["xpln"]=["explore explanation sets",TestXpln().testxpln]
     def concat(self, help):
         self.help+=help
         for i in self.testcases:
