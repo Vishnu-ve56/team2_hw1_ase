@@ -4,7 +4,7 @@ from src.cols import Col
 
 from src.globals import *
 from src.misc import Misc
-from discretization import bins
+from src.discretization import bins
 import math
 
 class Data:
@@ -95,8 +95,10 @@ class Data:
             else:
                 right.append(values[0])
         
+        evals= 1 if the['Reuse'] and above else 2
+        
 
-        return left, right, A, B, mid, c
+        return left, right, A, B, c, evals
 
     def better(self, row1,row2):
         s1,s2,ys = 0,0,self.cols.y
@@ -127,18 +129,18 @@ class Data:
     def sway(self):
         misc = Misc()
         the= misc.getThe()
-        def worker(rows,worse,above=None):
+        def worker(rows,worse,evalsZ=None,above=None):
             if len(rows) <= len(self.rows)**the['min']:
-                return rows, many(worse, the["rest"]*len(rows))
+                return rows, many(worse, the["rest"]*len(rows)), evalsZ
             else:
-                l,r,A,B,_,_ = self.half(rows,None,above)
+                l,r,A,B,_, evals = self.half(rows,None,above)
                 if self.better(B,A):
                     l,r,A,B = r,l,B,A
                 for i in r:
                     worse.append(i)
-                return worker(l,worse,A)
-        best,rest = worker(self.rows,[])
-        return self.clone(best),self.clone(rest)
+                return worker(l,worse,evals+evalsZ,A)
+        best,rest, evals = worker(self.rows,[],0)
+        return self.clone(best),self.clone(rest), evals
     def xpln(data, best, rest):
         def v(has):
             return value(has, len(best.rows), len(rest.rows), "best")
