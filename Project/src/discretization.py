@@ -100,25 +100,6 @@ def value(has,nB = None, nR = None, sGoal = None):
     r = r/(nR+1/float("inf"))
     return b**2/(b+r)
 
-def cliffsDelta(ns1, ns2):
-    if ns1>256:
-        ns1=many(ns1,256)
-    if ns2>256:
-        ns2=many(ns2,256)
-    if ns1>10*len(ns2):
-        ns1=many(ns1,10*len(ns2))
-    if ns2>10*len(ns1):
-        ns2=many(ns2,10*len(ns1))
-    n, gt, lt=0, 0, 0
-    for a,x in enumerate(ns1):
-        for b,y in enumerate(ns2):
-            n=n+1
-            if x>y:
-                gt+=1
-            if x<y:
-                lt+=1
-    obj= Misc()
-    return math.abs(lt-gt)/n > obj.getThe()["cliffs"]
 
 
 

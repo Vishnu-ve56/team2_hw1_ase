@@ -24,6 +24,3 @@ class Col:
         for i in self.accepted:
             i.add(row.cells[i.at])
     
-    def stats(self, what, cols, nPlaces):
-        def fun(k,col):
-            return 

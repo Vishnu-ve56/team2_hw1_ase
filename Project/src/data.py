@@ -16,7 +16,8 @@ class Data:
             cs=csv(src)
             cs.readFromCsv(self.add)
         else:
-            mapNew(src, self.add)
+            for row in src:
+                self.add(row)
         
     def add(self, t):
         if self.cols:
@@ -32,11 +33,11 @@ class Data:
         def fun(k, col):
             callable = getattr(col, what)
             return col.rnd(callable(), nPlaces), col.txt
-        return kap(cols, fun)
+        return kap(cols or self.cols.y, fun)
 
-    def clone(self, init):
-        data = Data(self.cols.names)
-        mapNew(init,data.add)
+    def clone(self, init = {}):
+        data = Data([self.cols.names])
+        _ = list(map(data.add, init))
         return data
     
     def furthest(self,row1, rows,cols=None):
@@ -73,7 +74,8 @@ class Data:
 
         rows = rows or self.rows
         some = many(rows, the["Halves"])
-        A = above or any(some)
+        A = above if above and the['Reuse'] else any(some)
+        
         listIndice = int((the["Far"] * len(rows))//1)
         
 
@@ -87,28 +89,25 @@ class Data:
         right = []
 
         nums = 0
-        mid = None
         for values in val:
-            nums+=1
-            if nums <= len(rows)/2:
+            if nums < len(rows)//2:
                 left.append(values[0])
-                mid = values[0]
             else:
                 right.append(values[0])
-        
-        evals= 1 if the['Reuse'] and above else 2
-        
 
+            nums+=1
+
+        evals= 1 if the['Reuse'] and above else 2
         return left, right, A, B, c, evals
 
-    def better(self, row1,row2):
+    def better(self, row1, row2):
         s1,s2,ys = 0,0,self.cols.y
         for _,col in enumerate(ys):
             x = col.norm(row1.cells[col.at])
             y = col.norm(row2.cells[col.at])
             s1 = s1 - math.exp(col.w * (x-y)/len(ys))
             s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
-        return s1 < s2
+        return s1/len(ys) < s2/len(ys)
     
     def betters(self, n):
         tmp = sorted(self.rows, key=lambda row: self.better(row, self.rows[self.rows.index(row) - 1]))
@@ -116,46 +115,45 @@ class Data:
 
 
     def cluster(self, rows=None, min=None, cols=None, above=None):
+        the = Misc().getThe()
         rows=rows or self.rows
         cols=cols or self.cols.x
+        min  = min or len(rows)**the['min']
+
         node = {"data": self.clone(rows)}
-        if len(rows)>=2:
-            left, right, node["A"],node["B"], node["mid"],node["c"] = self.half(rows,cols,above)
-            node["left"]=self.cluster(left,min,cols,node["A"])
-            node["right"]=self.cluster(right,min,cols,node["B"])
-        if "left" not in node:
-            node["left"]=None
-        if "right" not in node:
-            node["right"]=None   
+        if len(rows)>=2 * min:
+            left, right, node["A"],node["B"], _, _ = self.half(rows,cols,above)
+            node["left"]=self.cluster(left, min, cols, node["A"])
+            node["right"]=self.cluster(right, min, cols, node["B"]) 
         return node
 
     
     def sway(self):
         misc = Misc()
         the= misc.getThe()
-        def worker(rows,worse,evalsZ=None,above=None):
+        def worker(rows, worse, evalsZ=None, above=None):
             if len(rows) <= len(self.rows)**the['min']:
                 return rows, many(worse, the["rest"]*len(rows)), evalsZ
             else:
-                l,r,A,B,_, evals = self.half(rows,None,above)
+                l,r,A,B,_, evals = self.half(rows, None, above)
                 if self.better(B,A):
                     l,r,A,B = r,l,B,A
                 for i in r:
                     worse.append(i)
                 return worker(l,worse,evals+evalsZ,A)
-        best,rest, evals = worker(self.rows,[],0)
+        best,rest, evals = worker(self.rows, [], 0)
         return self.clone(best),self.clone(rest), evals
     
     def showRule(self, rule):
         def pretty(range):
-            return range['lo'] if range['lo']==range['hi'] else [range['lo'], range['hi']]
-        def merges(attr,ranges):
+            return range['lo'] if range['lo'] == range['hi'] else [range['lo'], range['hi']]
+        def merges(attr, ranges):
             return list(map(pretty,merge(sorted(ranges,key=itemgetter('lo'))))),attr
         def merge(t0):
             t,j =[],1
             left = None
             right = None
-            while j<=len(t0):
+            while j <= len(t0):
                 left = t0[j-1]
                 right  = t0[j] if j < len(t0) else None
                 if right and left["hi"] == right["lo"]:
@@ -164,7 +162,7 @@ class Data:
                 t.append({'lo':left['lo'], 'hi':left['hi']})
                 j=j+1
             return t if len(t0)==len(t) else merge(t) 
-        return dictionaryKap(rule,merges)
+        return dictionaryKap(rule, merges)
     
 
     def xpln(self, best, rest):
@@ -183,12 +181,12 @@ class Data:
         tmp = []
         maxSizes = {}
         for ranges in bins(self.cols.x, {"best": best.rows, "rest": rest.rows}):
-            maxSizes[ranges[0]['txt']] = len(ranges)
+            maxSizes[ranges[1]['txt']] = len(ranges)
             print("")
             for range in ranges:
                 print(range['txt'], range['lo'], range['hi'])
                 tmp.append({"range": range, "max": len(ranges), "val": v(range['y'].has)})
-        rule, most = firstN(sorted(tmp, key=lambda x: x["val"], reverse=True), score)
+        rule, most = firstN(sorted(tmp, key=itemgetter('val')), score)
         return rule, most
 
     def selects(self, rule, rows):
@@ -210,10 +208,15 @@ class Data:
                 if not disjunction(ranges, row):
                     return False
             return True
+        
 
-        return list(filter(lambda r: r is not None, map(lambda r: r if conjunction(r) else None, rows)))
+        def function(r):
+            if conjunction(r):
+                return r
 
-    def RULE(self,ranges, maxSize):
+        return list(map(function, rows))
+
+    def RULE(self, ranges, maxSize):
         t = {}
         for range in ranges:
             if range["txt"] not in t:

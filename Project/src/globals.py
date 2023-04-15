@@ -24,26 +24,13 @@ def coerce(s):
         
     return val 
 
-def kap(t,fun):
-    u={}
-    for k,v in enumerate(t):
-        v,k = fun(k,v)
-        u[k or 1+len(u)] = v
+def kap(t, fun):
+    u = {}
+    for v in t:
+        k = t.index(v)
+        v, k = fun(k,v) 
+        u[k or len(u)] = v
     return u
-
-def userdefinedmap(t, fun):
-    u={}
-    for k,v in enumerate(t):
-        v,k = fun(v)
-        u[k or 1+len(u)] = v
-    return u
-
-def mapNew(t, fun):
-    if(type(t[0]) == str):
-        fun(t)
-    else:
-        for row in t:
-            fun(row)
 
 
 def oo(t):
@@ -74,20 +61,6 @@ def o(t):
 
 Seed=937162211
 
-# def putSeed():
-#     global Seed
-#     f=open("seed.txt","w")
-#     f.write(str(Seed))
-#     f.close()
-
-# def setSeed():
-#     global Seed
-#     f=open("seed.txt","r")
-#     contents=f.read()
-#     Seed=int(contents)
-#     print(Seed)
-#     f.close()
-
 
 def rand(lo, hi=None):
     global Seed
@@ -100,17 +73,13 @@ def rint(lo, hi= None):
 
 def cosine(a,b,c):
     den = 1 if c == 0 else 2*c
-    x1 = (a**2 + c**2 - b**2)/den
-    x2 = max(0,min(1,x1))
-    y = (a**2 - x2**2)**0.5
-    if type(y)==complex:
-        y=0
-    return x2,y
+    x1 = (a**2 + c**2 - b**2) / den
+    return x1
 
 
-def many(t,n ):
-    u = []
-    for i in range(0,n):
+def many(t,n):
+    u=[]
+    for _ in range(1,n+1):
         u.append(any(t))
     return u
 
@@ -197,10 +166,15 @@ def value(has, nB, nR, sGoal=None):
 
 def prune(rule, maxSize):
     n = 0
+    newRule = {}
     for txt, ranges in rule.items():
         n += 1
         if len(ranges) == maxSize[txt]:
             n -= 1
-            del rule[txt]
+            rule[txt] = None
+        else:
+            newRule[txt] = ranges
     if n > 0:
         return rule
+
+    return None
