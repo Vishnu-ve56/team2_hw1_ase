@@ -10,6 +10,7 @@ class Misc:
         self.the = {}
         self.settings()
         self.cli()
+        self.the["cliff"] = 0.4
         # self.check()
     
     def getThe(self):

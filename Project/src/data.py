@@ -7,21 +7,24 @@ from src.misc import Misc
 from src.discretization import bins
 from operator import itemgetter
 import math
+from functools import cmp_to_key
 
 class Data:
-    def __init__(self, src):
+    def __init__(self, src = None , rows=None):
         self.rows=[]
         self.cols= None
-        if type(src)==str:
-            cs=csv(src)
-            cs.readFromCsv(self.add)
-        else:
-            for row in src:
-                self.add(row)
+        if(src) or rows:  
+            if type(src)==str:
+                cs=csv(src)
+                cs.readFromCsv(self.add)
+            else:
+                self.cols=Col(src.cols.names)
+                for row in rows:
+                    self.add(row)
         
     def add(self, t):
         if self.cols:
-            if(type(t) == list):
+            if(type(t) != Row):
                 t=Row(t)
             self.rows.append(t)
             self.cols.add(t)
@@ -29,16 +32,19 @@ class Data:
             self.cols=Col(t)
 
     
-    def stats(self, what, cols, nPlaces):
+    def stats(self, what = 'mid', cols = None, nPlaces = 2):
         def fun(k, col):
             callable = getattr(col, what)
             return col.rnd(callable(), nPlaces), col.txt
         return kap(cols or self.cols.y, fun)
 
     def clone(self, init = {}):
-        data = Data([self.cols.names])
-        _ = list(map(data.add, init))
-        return data
+        data_clone = Data()
+        data_clone.add(self.cols.names)
+        for _,t in enumerate(init or {}):
+            data_clone.add(t)
+        
+        return data_clone 
     
     def furthest(self,row1, rows,cols=None):
         t=self.around(row1, rows,cols)
@@ -109,9 +115,14 @@ class Data:
             s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
         return s1/len(ys) < s2/len(ys)
     
-    def betters(self, n):
-        tmp = sorted(self.rows, key=lambda row: self.better(row, self.rows[self.rows.index(row) - 1]))
-        return n and tmp[0:n], tmp[n + 1:] or tmp
+
+    def betters(self,n):
+        key = cmp_to_key(lambda row1, row2: -1 if self.better(row1, row2) else 1)
+        tmp = sorted(self.rows, key = key)
+        if n is None:
+            return tmp
+        else:
+            return tmp[1:n], tmp[n+1:]
 
 
     def cluster(self, rows=None, min=None, cols=None, above=None):
@@ -171,17 +182,18 @@ class Data:
 
         def score(ranges):
             rule = self.RULE(ranges, maxSizes)
+            print("1",rule)
             if rule:
-                oo(self.showRule(rule))
+                # oo(self.showRule(rule))
                 bestr = self.selects(rule, best.rows)
                 restr = self.selects(rule, rest.rows)
                 if len(bestr) + len(restr) > 0:
                     return v({"best": len(bestr), "rest": len(restr)}), rule
-
+            return None, None
         tmp = []
         maxSizes = {}
         for ranges in bins(self.cols.x, {"best": best.rows, "rest": rest.rows}):
-            maxSizes[ranges[1]['txt']] = len(ranges)
+            maxSizes[ranges[0]['txt']] = len(ranges)
             print("")
             for range in ranges:
                 print(range['txt'], range['lo'], range['hi'])
@@ -213,8 +225,14 @@ class Data:
         def function(r):
             if conjunction(r):
                 return r
+            else:
+                return None
 
-        return list(map(function, rows))
+        vals = list(map(function, rows))
+
+        vals = list(filter(lambda x: x is not None, vals))
+
+        return vals
 
     def RULE(self, ranges, maxSize):
         t = {}
@@ -222,4 +240,6 @@ class Data:
             if range["txt"] not in t:
                 t[range["txt"]] = []
             t[range["txt"]].append({"lo": range["lo"], "hi": range["hi"], "at": range["at"]})
+        
+        print(t, "Before Prune")
         return prune(t, maxSize)

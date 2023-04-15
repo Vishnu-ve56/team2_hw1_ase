@@ -16,7 +16,10 @@ constants = {
                     " -p  --p       dist coefficient             = 2\n"
                     " -r  --rest    how many of rest to sample   = 4\n"
                     " -R  --Reuse   child splits reuse a parent pole = true\n"
+                    " -B  --bootstrap bootstrap                   = 512\n"
+                    " -C  --conf      conf                        = 0.05\n"
                     " -s  --seed    random number seed           = 937162211\n"
+                    " -n  --n_iter  no of iterations             = 3\n"
                     "ACTIONS:\n"
     )
 }

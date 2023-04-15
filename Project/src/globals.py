@@ -2,6 +2,39 @@ import math
 import copy
 import re
 import json
+import pandas as pd
+import numpy as np
+import os
+
+
+
+
+top_table = {'all': {'data' : [], 'evals' : 0},
+             'sway1': {'data' : [], 'evals' : 0},
+             'sway2': {'data' : [], 'evals' : 0},
+             'xpln1': {'data' : [], 'evals' : 0},
+             'xpln2': {'data' : [], 'evals' : 0},
+             'top': {'data' : [], 'evals' : 0}}
+
+bottom_table = [[['all', 'all'],None],
+                [['all', 'sway1'],None],
+                [['sway1', 'sway2'],None],
+                [['sway1', 'xpln1'],None],
+                [['sway2', 'xpln2'],None],
+                [['sway1', 'top'],None]]
+
+def avgStat(dataList,iter):
+    res={}
+    for i in dataList:
+        for k,v in i.stats().items():
+            res[k]=res.get(k,0)+v
+    for k,v in res.items():
+        res[k]/=iter
+    return res
+
+
+
+
 
 
 def rnd(n, places=None):
@@ -62,7 +95,7 @@ def o(t):
 Seed=937162211
 
 
-def rand(lo, hi=None):
+def rand(lo = None, hi=None):
     global Seed
     lo, hi = lo or 0, hi or 1
     Seed  =  (16807 * Seed) % 2147483647
@@ -124,8 +157,8 @@ def transpose(m):
 
 def firstN(sortedRanges, scoreFun):
     print("")
-    for r in sortedRanges:
-        print(r["range"]["txt"], r["range"]["lo"], r["range"]["hi"], rnd(r["val"]), o(r["range"]["y"].has))
+    # for r in sortedRanges:
+    #     print(r["range"]["txt"], r["range"]["lo"], r["range"]["hi"], rnd(r["val"]), o(r["range"]["y"].has))
 
     first = sortedRanges[0]["val"]
 
@@ -175,6 +208,24 @@ def prune(rule, maxSize):
         else:
             newRule[txt] = ranges
     if n > 0:
-        return rule
+        return newRule
 
     return None
+
+def handleMissingValues(file, Data):
+
+    currentWorkingPath = os.path.dirname(__file__)
+    fileName = os.path.join(currentWorkingPath, file)
+    df=pd.read_csv(fileName)
+    for c in df.columns[df.eq('?').any()]:
+        df[c]=df[c].replace('?',np.nan)
+        df[c]=df[c].astype(float)
+        df[c]=df[c].fillna(df[c].mean())
+    file=file.replace('.csv','_handled.csv')
+    fileName=fileName.replace('.csv','_handled.csv')
+    df.to_csv(fileName, index=False)
+    return Data(file)
+
+
+                              
+
