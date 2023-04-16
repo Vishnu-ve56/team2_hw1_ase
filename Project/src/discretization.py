@@ -15,7 +15,7 @@ def bins(cols,rowss):
             for row in rowss[y]:
                 x = row.cells[col.at]
                 if x != "?":
-                    k = int(bin(col,x))
+                    k = bin(col,x)
                     if k not in ranges:
                         ranges[k] = RANGE(col.at,col.txt,x)
                     extend(ranges[k], x, y)

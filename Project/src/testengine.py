@@ -70,7 +70,7 @@ class testengine:
                     for k in range(len(data.cols.y)):
                         if bottom_table[i][1][k] == '=':
                             y0, z0 = top_table[b]['data'][count].cols.y[k],top_table[d]['data'][count].cols.y[k]
-                            is_equal = bootstrap(y0.values(), z0.values()) and cliffsDelta(y0.values(), z0.values())
+                            is_equal = cliffsDelta(y0.values(), z0.values())
                             if not is_equal:
                                 bottom_table[i][1][k] = '≠'
                 count+=1
@@ -93,10 +93,10 @@ class testengine:
         # outfile.write(tabulate(table, headers=headers+["n_evals avg"],numalign="right"))
         # outfile.write('\n')
 
-        # table=[]
-        # for [base, diff], result in bottom_table:
-        #     table.append([f"{base} to {diff}"] + result)
-        # print(tabulate(table, headers=headers,numalign="right"))
+        table=[]
+        for [base, diff], result in bottom_table:
+            table.append([f"{base} to {diff}"] + result)
+        print(tabulate(table, headers=headers,numalign="right"))
         # outfile.write(tabulate(table, headers=headers,numalign="right"))
 
         for i in self.testcases:
