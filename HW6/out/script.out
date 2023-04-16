@@ -1,0 +1,36 @@
+
+Clndrs -inf 4
+Clndrs 4 inf
+
+Volume -inf 116
+Volume 116 inf
+
+Model -inf 77
+Model 77 inf
+
+origin 1 1
+origin 2 2
+origin 3 3
+
+origin 2 2 0.842 {:best 12 :rest 9}
+Volume -inf 116 0.48 {:best 7 :rest 6}
+Model -inf 77 0.089 {:best 2 :rest 7}
+Clndrs -inf 4 0.056 {:best 1 :rest 2}
+Clndrs 4 inf 0.0 {:rest 9}
+Volume 116 inf 0.0 {:rest 13}
+Model 77 inf 0.0 {:rest 4}
+origin 1 1 0.0 {:rest 25}
+origin 3 3 0.0 {:rest 14}
+{:origin {2}}
+{:Volume {[-inf, 116]} :origin {2}}
+{:Model {[-inf, 77]} :Volume {[-inf, 116]} :origin {2}}
+
+_____________
+explain= {'origin': [2], 'Volume': [[-inf, 116]]}
+all          : {'Lbs-': 2970.42, 'Acc+': 15.57, 'Mpg+': 23.84} {'Lbs-': 846.84, 'Acc+': 2.76, 'Mpg+': 8.34}
+sway with  6  evals {'Lbs-': 2050.33, 'Acc+': 15.48, 'Mpg+': 29.17} {'Lbs-': 152.49, 'Acc+': 2.12, 'Mpg+': 2.89}
+xpln on  6 evals {'Lbs-': 2126.21, 'Acc+': 16.81, 'Mpg+': 30.95} {'Lbs-': 229.24, 'Acc+': 3.02, 'Mpg+': 5.76}
+sort with  398 evals {'Lbs-': 4674.33, 'Acc+': 12.71, 'Mpg+': 10.0} {'Lbs-': 299.42, 'Acc+': 2.05, 'Mpg+': 0.0}
+✅ pass: xpln
+
+Number of failed tests:  0
