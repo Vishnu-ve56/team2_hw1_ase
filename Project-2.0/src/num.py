@@ -7,6 +7,7 @@ class NUM:
         self.mu = 0
         self.n = 0
         self.m2 = 0
+        self.sd = 0
         self.hi =-1*sys.maxsize
         self.lo = sys.maxsize
         try:
@@ -23,6 +24,7 @@ class NUM:
             d = n - self.mu
             self.mu = self.mu + d/self.n
             self.m2 = self.m2 + d*(n-self.mu)
+            self.sd =  0 if self.n<2 else (self.m2/(self.n - 1))**.5
             self.lo = min(n,self.lo)
             self.hi = max(n,self.hi)
         

@@ -9,11 +9,8 @@ def main():
 
     testEngine= testengine(the)
     testEngine.concat(help)
+    # testEngine.zitlerRanks()
     testEngine.runtests()
-
-
-    
-
 
 
 if __name__ == "__main__":

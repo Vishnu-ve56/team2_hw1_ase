@@ -5,18 +5,14 @@ import json
 
 
 top_table = {'all': {'data' : [], 'evals' : 0},
-             'sway1': {'data' : [], 'evals' : 0},
-             'sway2': {'data' : [], 'evals' : 0},
-             'xpln1': {'data' : [], 'evals' : 0},
-             'xpln2': {'data' : [], 'evals' : 0},
+             'sway': {'data' : [], 'evals' : 0},
+             'xpln': {'data' : [], 'evals' : 0},
              'top': {'data' : [], 'evals' : 0}}
 
 bottom_table = [[['all', 'all'],None],
-                [['all', 'sway1'],None],
-                [['sway1', 'sway2'],None],
-                [['sway1', 'xpln1'],None],
-                [['sway2', 'xpln2'],None],
-                [['sway1', 'top'],None]]
+                [['all', 'sway'],None],
+                [['sway', 'xpln'],None],
+                [['sway', 'top'],None]]
 
 def avgStat(dataList,iter):
     res={}
@@ -194,9 +190,39 @@ def firstN(sortedRanges, scoreFun):
         ranges = list(map(lambda r: r["range"], sortedRanges[:n]))
         tmp, rule = scoreFun(ranges)
         if tmp and tmp > most:
-            out, most = rule, tmp
+            out, most = rule, tmp  
 
     return out, most
+
+def firstN2(sortedRanges, scoreFun):
+    print("")
+    for r in sortedRanges:
+        print(r["range"]["txt"], r["range"]["lo"], r["range"]["hi"], rnd(r["val"]), o(r["range"]["y"].has))
+
+    first = sortedRanges[0]["val"]
+
+    def useful(range):
+        if range["val"] > 0.05 and range["val"] > first / 10:
+            return range
+
+    sortedRanges = list(filter(lambda r: r is not None, map(useful, sortedRanges)))
+    most, out = -1, -1
+
+    for n in range(0, len(sortedRanges)):
+        ranges = []
+        ranges.append(sortedRanges[n]["range"])
+        tmp, rule = scoreFun(ranges)
+        
+        if tmp and tmp > most:
+            out, most = rule, tmp
+        
+        for k in range(n+1, len(sortedRanges)):
+            ranges.append(sortedRanges[k]["range"])
+            if tmp and tmp > most:
+                out, most = rule, tmp     
+
+    return out, most
+
 
 def dictionaryKap(t, fun):
     u = {}

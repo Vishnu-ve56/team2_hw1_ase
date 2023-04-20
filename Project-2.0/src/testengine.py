@@ -5,11 +5,12 @@ from src.misc import Misc
 from src.data import *
 from tabulate import tabulate
 from src.stats import *
-import random
+import os
 
 
 
 class testengine:
+
     def __init__(self,the):
         self.the = the
         self.help = ""
@@ -21,6 +22,16 @@ class testengine:
         self.help+=help
         for i in self.testcases:
             self.help+=" -g  {0}\t{1}\n".format(i, self.testcases[i][0])
+
+    def zitlerRanks(self):
+
+        data=Data(the['file'])
+        betterC, _ = data.betters(100)
+
+        for i in betterC:
+            print(i.cells)
+
+    
     def runtests(self):
         if(self.the["help"] == True):
             print(self.help)
@@ -28,27 +39,33 @@ class testengine:
         misc=Misc()
         the=misc.getThe()
         count=0
+        means = []
         while count < the["n_iter"]:
-            print("SHIT", count)
             data=Data(the['file'])
 
             # data2=handleMissingValues(the['file'],Data)
-            best,rest,evals=data.sway()
 
-            rule,_=data.xpln(best,rest)
+
+            best,rest,evals = data.sway2()
+            rule,_ = data.xpln(best,rest)
+            txt1 = data.sway2.__name__
+            txt2 = data.xpln.__name__
+            txt3 = the["min"]
+
             if rule!=-1:
+                sta = {"mean": {} , "SD": {}}
+                sta['mean'] = best.stats()
+                sta['SD'] = best.stats("div")
+                means.append(sta)
+
                 betterC,_=data.betters(len(best.rows))
                 top_table['top']['data'].append(data.clone(betterC))
-                top_table['xpln1']['data'].append(data.clone(data.selects(rule,data.rows)))
-                top_table['xpln2']['data'].append(data.clone(data.selects(rule,data.rows)))
+                top_table['xpln']['data'].append(data.clone(data.selects(rule,data.rows)))
                 top_table['all']['data'].append(data)
-                top_table['sway1']['data'].append(best)
-                top_table['sway2']['data'].append(best)
+                top_table['sway']['data'].append(best)
                 top_table['all']['evals'] += 0
-                top_table['sway1']['evals'] += evals
-                top_table['sway2']['evals'] += evals
-                top_table['xpln1']['evals'] += evals
-                top_table['xpln2']['evals'] += evals
+                top_table['sway']['evals'] += evals
+                top_table['xpln']['evals'] += evals
                 top_table['top']['evals'] += len(data.rows)
 
                 for i in range(len(bottom_table)):
@@ -63,8 +80,7 @@ class testengine:
                             y0vals = []
                             for rowY in y0Rows:
                                 if len(y0vals) == the["Max"]:
-                                    val = rint(0,511)
-                                    print(val)    
+                                    val = rint(0,the["Max"]-1)    
                                     y0vals[val]  = rowY.cells[y0.at]
                                 else:
                                     y0vals.append(rowY.cells[y0.at])
@@ -72,42 +88,60 @@ class testengine:
                             z0vals = []
                             for rowZ in z0Rows:
                                 if len(z0vals) == the["Max"]:
-                                    val = rint(0,511)
-                                    print(val)
+                                    val = rint(0,the["Max"]-1)
                                     z0vals[val]  = rowZ.cells[z0.at]
                                 else:
                                     z0vals.append(rowZ.cells[z0.at])
 
-                            print(len(y0vals),len(z0vals))
-                            is_equal = cliffsDelta(y0vals, z0vals)
+                            is_equal = cliffsDelta(y0vals, z0vals) 
                             
                             if not is_equal:
                                 bottom_table[i][1][k] = '≠'
                 count+=1
+        
+        currentWorkingPath = os.path.dirname(__file__)
+        fileName = os.path.join(currentWorkingPath, the["file"])
+        with open(fileName.replace('/data', '/out').replace('.csv', '.out'), 'a') as outfile:
 
+            outfile.write("\n") 
+            head = txt1 + " and " + txt2 + " for budget " + str(txt3) + '(the["min"])'
 
-        headers = [y.txt for y in data.cols.y]
-        table = []
-        for k,v in top_table.items():
-            stats = [k] + [avgStat(v['data'],the['n_iter'])[y] for y in headers]
-            stats += [v['evals']/the['n_iter']]
-            table.append(stats)
+            outfile.write(head)
 
-        print(tabulate(table, headers=headers+["n_evals avg"],numalign="right"))
-        print()
+            outfile.write("\n")  
+            headers = [y.txt for y in data.cols.y]
+            table = []
+        
+            for k,v in top_table.items():
+                stats = [k] + [avgStat(v['data'],the['n_iter'])[y] for y in headers]
+                stats += [v['evals']/the['n_iter']]
+                table.append(stats)
 
-        table=[]
-        for [base, diff], result in bottom_table:
-            table.append([f"{base} to {diff}"] + result)
-        print(tabulate(table, headers=headers,numalign="right"))
+            print(tabulate(table, headers=headers+["n_evals avg"],numalign="right"))
+            print()
+            outfile.write(tabulate(table, headers=headers+["n_evals avg"],numalign="right"))
+            outfile.write('\n')
 
-        for i in self.testcases:
-            if self.the["go"].lower()=="all" or self.the["go"]==i:
-                if self.testcases[i][1]()== False:
-                    self.fails+=1
-                    print("❌ fail:",i)
-                else:
-                    print("✅ pass:",i)
+            table=[]
+            for [base, diff], result in bottom_table:
+                table.append([f"{base} to {diff}"] + result)
+            print(tabulate(table, headers=headers,numalign="right"))
+            # outfile.write(tabulate(table, headers=headers,numalign="right"))
+
+            # for i in range(len(means)):
+            #     outfile.write("\n")
+            #     outfile.write(str(i) + "th iteration mean and sd:")
+            #     outfile.write("\n")
+            #     outfile.write("Mean: " + str(means[i]["mean"]))
+            #     outfile.write("SD: " + str(means[i]["SD"]))
+
+        # for i in self.testcases:
+        #     if self.the["go"].lower()=="all" or self.the["go"]==i:
+        #         if self.testcases[i][1]()== False:
+        #             self.fails+=1
+        #             print("❌ fail:",i)
+        #         else:
+        #             print("✅ pass:",i)
 
 
 

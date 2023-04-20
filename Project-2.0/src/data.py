@@ -9,6 +9,8 @@ from operator import itemgetter
 import math
 
 from functools import cmp_to_key
+import numpy as np
+from sklearn.cluster import AgglomerativeClustering
 
 class Data:
     def __init__(self, src):
@@ -65,6 +67,56 @@ class Data:
         val = sorted(val, key=lambda x: x[1])
         return val
 
+
+    def half2(self, rows = None, cols = None, above = None):
+        
+        misc = Misc()
+        the = misc.getThe()
+
+        outerList = []
+        for r in rows:
+            innerList = []  
+            for _,col in enumerate(cols or self.cols.x):
+                innerList.append(r.cells[col.at])
+            
+            outerList.append(innerList)
+    
+        outerList = np.array(outerList)
+
+        clustering = AgglomerativeClustering(n_clusters = 2, linkage = 'average')
+        clustering.fit(outerList)
+        left_indices = np.where(clustering.labels_ == 0)[0]
+        right_indices = np.where(clustering.labels_ == 1)[0]
+
+
+        rowLeft = []
+        rowRight = []
+
+        rowLeftNP = []
+        rowRightNP = []
+        for i in range(len(rows)):
+            if i in left_indices:
+                rowLeft.append(rows[i])
+            else:
+                rowRight.append(rows[i])
+            
+            if i in left_indices and "?" not in rows[i].cells:
+                rowLeftNP.append(rows[i].cells)
+            else:
+                if "?" not in rows[i].cells:
+                    rowRightNP.append(rows[i].cells)
+        
+        rowLeftNP = np.mean(np.array(rowLeftNP), axis=0).tolist()
+        rowRightNP = np.mean(np.array(rowRightNP), axis=0).tolist()
+
+        evals = 1 if the['Reuse'] and above else 2
+        return rowLeft, rowRight, Row(rowLeftNP), Row(rowRightNP), 0, evals
+        # print(rowRight, len(rowRight))
+        # try:
+        #     return rowLeft, rowRight, rowLeft[rint(0, len(rowLeft)-1)], rowRight[rint(0, len(rowRight)-1)], 0, evals
+        # except:
+        #     return rowLeft, rowRight, rowLeft[0], rowRight[0], 0, evals
+
     def half(self, rows = None, cols = None, above = None):
         misc = Misc()
         the = misc.getThe()
@@ -76,8 +128,6 @@ class Data:
         rows = rows or self.rows
         some = many(rows, the["Halves"])
         A = above or any(some)
-
-        
 
 
         B = self.around(A,some)
@@ -114,7 +164,14 @@ class Data:
             s1 = s1 - math.exp(col.w * (x-y)/len(ys))
             s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
         return s1 < s2
-    
+
+    # def better(self, row1, row2):
+    #     def f(row):
+    #         ys = self.cols.y
+    #         return -sum(math.exp(col.w * col.norm(row.cells[col.at])) for _, col in enumerate(ys)) / len(ys)
+        
+    #     return f(row1) < f(row2)
+
     def betters(self,n):
         key = cmp_to_key(lambda row1, row2: -1 if self.better(row1, row2) else 1)
         tmp = sorted(self.rows, key = key)
@@ -123,6 +180,13 @@ class Data:
         else:
             return tmp[1:n], tmp[n+1:]
 
+    def bettersAndWorst(self,n, n2):
+        key = cmp_to_key(lambda row1, row2: -1 if self.better(row1, row2) else 1)
+        tmp = sorted(self.rows, key = key)
+        if n is None:
+            return tmp
+        else:
+            return tmp[1:n], tmp[-n2:]
 
     def cluster(self, rows=None, min=None, cols=None, above=None):
         rows=rows or self.rows
@@ -147,6 +211,22 @@ class Data:
                 return rows, many(worse, the["rest"]*len(rows)), evalsZ
             else:
                 l,r,A,B,_, evals = self.half(rows,None,above)
+                if self.better(B,A):
+                    l,r,A,B = r,l,B,A
+                for i in r:
+                    worse.append(i)
+                return worker(l,worse,evals+evalsZ,A)
+        best,rest, evals = worker(self.rows,[],0)
+        return self.clone(best),self.clone(rest), evals
+
+    def sway2(self):
+        misc = Misc()
+        the= misc.getThe()
+        def worker(rows,worse,evalsZ=None,above=None):
+            if len(rows) <= len(self.rows)**the['min']:
+                return rows, many(worse, the["rest"]*len(rows)), evalsZ
+            else:
+                l,r,A,B,_, evals = self.half2(rows,None,above)
                 if self.better(B,A):
                     l,r,A,B = r,l,B,A
                 for i in r:
@@ -183,7 +263,6 @@ class Data:
         def score(ranges):
             rule = self.RULE(ranges, maxSizes)
             if rule:
-                oo(self.showRule(rule))
                 bestr = self.selects(rule, best.rows)
                 restr = self.selects(rule, rest.rows)
                 if len(bestr) + len(restr) > 0:
@@ -194,11 +273,35 @@ class Data:
         maxSizes = {}
         for ranges in bins(self.cols.x, {"best": best.rows, "rest": rest.rows}):
             maxSizes[ranges[0]['txt']] = len(ranges)
-            print("")
+
             for range in ranges:
-                print(range['txt'], range['lo'], range['hi'])
+
                 tmp.append({"range": range, "max": len(ranges), "val": v(range['y'].has)})
         rule, most = firstN(sorted(tmp, key=lambda x: x["val"], reverse=True), score)
+        return rule, most
+
+    def xpln2(self, best, rest):
+        def v(has):
+            return value(has, len(best.rows), len(rest.rows), "best")
+
+        def score(ranges):
+            rule = self.RULE(ranges, maxSizes)
+            if rule:
+                bestr = self.selects(rule, best.rows)
+                restr = self.selects(rule, rest.rows)
+                if len(bestr) + len(restr) > 0:
+                    return v({"best": len(bestr), "rest": len(restr)}), rule
+            
+            return None, None
+        tmp = []
+        maxSizes = {}
+        for ranges in bins(self.cols.x, {"best": best.rows, "rest": rest.rows}):
+            maxSizes[ranges[0]['txt']] = len(ranges)
+
+            for range in ranges:
+
+                tmp.append({"range": range, "max": len(ranges), "val": v(range['y'].has)})
+        rule, most = firstN2(sorted(tmp, key=lambda x: x["val"], reverse=True), score)
         return rule, most
 
     def selects(self, rule, rows):

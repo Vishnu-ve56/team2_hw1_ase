@@ -1,0 +1,203 @@
+
+sway and xpln
+         Lbs-     Acc+     Mpg+    n_evals avg
+----  -------  -------  -------  -------------
+all   2970.42    15.57    23.84              0
+sway  2223.85   16.867  32.0265              6
+xpln  2304.97  16.4595  29.3475              6
+top   1992.19   19.509   40.902            398
+
+sway2 and xpln
+         Lbs-    Acc+    Mpg+    n_evals avg
+----  -------  ------  ------  -------------
+all   2970.42   15.57   23.84              0
+sway  1997.08   18.05   36.15              8
+xpln   1985.3  17.231  32.574              8
+top   1994.67   19.41   40.83            398
+
+sway2 and xpln2
+         Lbs-    Acc+     Mpg+    n_evals avg
+----  -------  ------  -------  -------------
+all   2970.42   15.57    23.84              0
+sway  1997.08   18.05    36.15              8
+xpln  1997.08  17.161  32.5035              8
+top   1994.67   19.41    40.83            398
+
+sway and xpln2
+         Lbs-     Acc+    Mpg+    n_evals avg
+----  -------  -------  ------  -------------
+all   2970.42    15.57   23.84              0
+sway  2251.27   16.955  31.735              6
+xpln  2346.07  16.3785  29.096              6
+top   1992.19   19.509  40.902            398
+
+sway2 and xpln for budget 0.5(the["min"])
+         Lbs-    Acc+    Mpg+    n_evals avg
+----  -------  ------  ------  -------------
+all   2970.42   15.57   23.84              0
+sway  1997.08   18.05   36.15              8
+xpln   1985.3  17.231  32.574              8
+top   1994.67   19.41   40.83            398
+
+sway2 and xpln for budget 0.35(the["min"])
+         Lbs-    Acc+    Mpg+    n_evals avg
+----  -------  ------  ------  -------------
+all   2970.42   15.57   23.84              0
+sway  2014.25    17.9   38.75             10
+xpln  1985.82   17.27  32.492             10
+top   1989.71   20.11   41.43            398
+
+
+
+sway2 and xpln for budget 0.2(the["min"])
+         Lbs-    Acc+    Mpg+    n_evals avg
+----  -------  ------  ------  -------------
+all   2970.42   15.57   23.84              0
+sway  1973.33   18.63      40             12
+xpln  2143.16  17.037  32.021             12
+top    2222.5    20.8      45            398
+
+
+
+sway2 and xpln for budget 0.62(the["min"])
+         Lbs-    Acc+     Mpg+    n_evals avg
+----  -------  ------  -------  -------------
+all   2970.42   15.57    23.84              0
+sway   1994.1   17.18    34.62              6
+xpln  2109.75  16.776  31.3995              6
+top   2006.03   18.67    36.84            398
+
+sway2 and xpln for budget 0.75(the["min"])
+         Lbs-    Acc+     Mpg+    n_evals avg
+----  -------  ------  -------  -------------
+all   2970.42   15.57    23.84              0
+sway  2059.38   17.12    32.44              5
+xpln  2107.09  16.753  31.3195              5
+top   2093.51   17.91    34.07            398
+
+sway2 and xpln for budget 0.9(the["min"])
+         Lbs-    Acc+    Mpg+    n_evals avg
+----  -------  ------  ------  -------------
+all   2970.42   15.57   23.84              0
+sway  2209.52   16.59   30.12              3
+xpln  2227.02   16.45   29.85              3
+top   2250.48   16.94   31.65            398
+
+sway2 and xpln for budget 0.9(the["min"])
+         Lbs-    Acc+    Mpg+    n_evals avg
+----  -------  ------  ------  -------------
+all   2970.42   15.57   23.84              0
+sway  2209.52   16.59   30.12              3
+xpln  2227.02   16.45   29.85              3
+top   2250.48   16.94   31.65            398
+
+
+
+0th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+1th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+2th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+3th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+4th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+5th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+6th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+7th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+8th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+9th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+10th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+11th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+12th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+13th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+14th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+15th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+16th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+17th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+18th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+19th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+
+
+sway2 and xpln for budget 0.5(the["min"]) - Randomized Seeds(Choosing rand point in cluster)
+         Lbs-     Acc+     Mpg+    n_evals avg
+----  -------  -------  -------  -------------
+all   2970.42    15.57    23.84              0
+sway  2109.88  17.2505  31.6625           6.65
+xpln  2210.84   16.834   30.204           6.65
+top   1973.35    19.42   39.913            398
+
+0th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+1th iteration mean and sd:
+Mean: {'Lbs-': 2753.88, 'Acc+': 16.15, 'Mpg+': 25.29}SD: {'Lbs-': 161.7, 'Acc+': 2.11, 'Mpg+': 5.14}
+2th iteration mean and sd:
+Mean: {'Lbs-': 2166.2, 'Acc+': 17.64, 'Mpg+': 33.0}SD: {'Lbs-': 105.86, 'Acc+': 2.98, 'Mpg+': 4.83}
+3th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+4th iteration mean and sd:
+Mean: {'Lbs-': 2134.12, 'Acc+': 17.47, 'Mpg+': 28.82}SD: {'Lbs-': 145.48, 'Acc+': 2.58, 'Mpg+': 3.32}
+5th iteration mean and sd:
+Mean: {'Lbs-': 2072.31, 'Acc+': 16.26, 'Mpg+': 30.63}SD: {'Lbs-': 144.59, 'Acc+': 2.28, 'Mpg+': 4.43}
+6th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+7th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+8th iteration mean and sd:
+Mean: {'Lbs-': 2166.2, 'Acc+': 17.64, 'Mpg+': 33.0}SD: {'Lbs-': 105.86, 'Acc+': 2.98, 'Mpg+': 4.83}
+9th iteration mean and sd:
+Mean: {'Lbs-': 2944.62, 'Acc+': 17.38, 'Mpg+': 26.15}SD: {'Lbs-': 197.34, 'Acc+': 3.41, 'Mpg+': 5.06}
+10th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+11th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+12th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+13th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+14th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+15th iteration mean and sd:
+Mean: {'Lbs-': 1979.06, 'Acc+': 16.94, 'Mpg+': 30.0}SD: {'Lbs-': 289.24, 'Acc+': 2.59, 'Mpg+': 7.07}
+16th iteration mean and sd:
+Mean: {'Lbs-': 1992.24, 'Acc+': 17.11, 'Mpg+': 36.47}SD: {'Lbs-': 121.33, 'Acc+': 2.87, 'Mpg+': 4.93}
+17th iteration mean and sd:
+Mean: {'Lbs-': 1992.24, 'Acc+': 17.11, 'Mpg+': 36.47}SD: {'Lbs-': 121.33, 'Acc+': 2.87, 'Mpg+': 4.93}
+18th iteration mean and sd:
+Mean: {'Lbs-': 2134.12, 'Acc+': 17.47, 'Mpg+': 28.82}SD: {'Lbs-': 145.48, 'Acc+': 2.58, 'Mpg+': 3.32}
+19th iteration mean and sd:
+Mean: {'Lbs-': 1997.08, 'Acc+': 18.05, 'Mpg+': 36.15}SD: {'Lbs-': 80.73, 'Acc+': 1.82, 'Mpg+': 6.5}
+
+
+sway2 and xpln for budget 0.5(the["min"])
+         Lbs-     Acc+     Mpg+    n_evals avg
+----  -------  -------  -------  -------------
+all   2970.42    15.57    23.84              0
+sway  2109.88  17.2505  31.6625           6.65
+xpln  2210.84   16.834   30.204           6.65
+top   1973.35    19.42   39.913            398
+
+
+sway2 and xpln for budget 0.35(the["min"])
+         Lbs-     Acc+     Mpg+    n_evals avg
+----  -------  -------  -------  -------------
+all   2970.42    15.57    23.84              0
+sway  2197.96  16.8595  29.7445           6.95
+xpln  2174.92   16.726  29.7895           6.95
+top   2108.83   21.241   41.606            398
