@@ -22,15 +22,6 @@ class testengine:
         self.help+=help
         for i in self.testcases:
             self.help+=" -g  {0}\t{1}\n".format(i, self.testcases[i][0])
-
-    def zitlerRanks(self):
-
-        data=Data(the['file'])
-        betterC, _ = data.betters(100)
-
-        for i in betterC:
-            print(i.cells)
-
     
     def runtests(self):
         if(self.the["help"] == True):
@@ -45,12 +36,34 @@ class testengine:
 
             # data2=handleMissingValues(the['file'],Data)
 
+            if(the["options"] == 1):
+                best,rest,evals = data.sway()
+                rule,_ = data.xpln(best,rest)
+                txt1 = data.sway.__name__
+                txt2 = data.xpln.__name__
+                txt3 = the["min"]
+            
+            elif(the["options"] == 2):
+                best,rest,evals = data.sway2()
+                rule,_ = data.xpln(best,rest)
+                txt1 = data.sway2.__name__
+                txt2 = data.xpln.__name__
+                txt3 = the["min"]
+            
+            elif(the["options"] == 3):
+                best,rest,evals = data.sway2()
+                rule,_ = data.xpln2(best,rest)
+                txt1 = data.sway2.__name__
+                txt2 = data.xpln2.__name__
+                txt3 = the["min"]
+            
+            elif(the['options'] == 4):
+                best,rest,evals = data.sway()
+                rule,_ = data.xpln2(best,rest)
+                txt1 = data.sway.__name__
+                txt2 = data.xpln2.__name__
+                txt3 = the["min"]
 
-            best,rest,evals = data.sway2()
-            rule,_ = data.xpln(best,rest)
-            txt1 = data.sway2.__name__
-            txt2 = data.xpln.__name__
-            txt3 = the["min"]
 
             if rule!=-1:
                 sta = {"mean": {} , "SD": {}}
@@ -96,7 +109,7 @@ class testengine:
                             is_equal = cliffsDelta(y0vals, z0vals) 
                             
                             if not is_equal:
-                                bottom_table[i][1][k] = '≠'
+                                bottom_table[i][1][k] = 'neq'
                 count+=1
         
         currentWorkingPath = os.path.dirname(__file__)
@@ -126,14 +139,41 @@ class testengine:
             for [base, diff], result in bottom_table:
                 table.append([f"{base} to {diff}"] + result)
             print(tabulate(table, headers=headers,numalign="right"))
-            # outfile.write(tabulate(table, headers=headers,numalign="right"))
+            outfile.write(tabulate(table, headers=headers,numalign="right"))
 
-            # for i in range(len(means)):
-            #     outfile.write("\n")
-            #     outfile.write(str(i) + "th iteration mean and sd:")
-            #     outfile.write("\n")
-            #     outfile.write("Mean: " + str(means[i]["mean"]))
-            #     outfile.write("SD: " + str(means[i]["SD"]))
+            outfile.write("\n")
+            for i in range(len(means)):
+                outfile.write("\n")
+                outfile.write(str(i) + "th iteration mean and sd:")
+                outfile.write("\n")
+                outfile.write("Mean: " + str(means[i]["mean"]))
+                outfile.write("SD: " + str(means[i]["SD"]))
+                outfile.write("\n")
+
+
+            
+            betterC,_=data.betters(80)
+            
+            outfile.write("\n")
+            outfile.write("These are the 80 best ranks according to zitlers domination predicate for the whole dataset")
+            outfile.write("\n")
+            betterDict = []
+            for i in betterC:
+                bDict = {}
+                outfile.write(str(i.cells))
+                outfile.write("\n")
+                for col in data.cols.y:
+                    bDict[col.txt] = i.cells[col.at]
+
+                betterDict.append(bDict) 
+            statsDict = avgStat(top_table["sway"]["data"], the["n_iter"])
+
+            outfile.write("\n" + "This is the average of the best gotten from sway: " +str(statsDict) + "\n")
+            for i in range(len(betterDict)):
+                if(data.compareDicts(statsDict, betterDict[i])):
+                    outfile.write("The rank with respect to the top 80 is here:(worst than how many from the top): " + str(i))
+                    outfile.write("\n")
+                    break
 
         # for i in self.testcases:
         #     if self.the["go"].lower()=="all" or self.the["go"]==i:

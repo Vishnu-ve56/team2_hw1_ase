@@ -10,7 +10,7 @@ import math
 
 from functools import cmp_to_key
 import numpy as np
-from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import AgglomerativeClustering,DBSCAN
 
 class Data:
     def __init__(self, src):
@@ -67,8 +67,8 @@ class Data:
         val = sorted(val, key=lambda x: x[1])
         return val
 
-
-    def half2(self, rows = None, cols = None, above = None):
+    # This function  can be used if you don't want multiple iterations and just want the centoid comparison
+    def half3(self, rows = None, cols = None, above = None):
         
         misc = Misc()
         the = misc.getThe()
@@ -111,11 +111,75 @@ class Data:
 
         evals = 1 if the['Reuse'] and above else 2
         return rowLeft, rowRight, Row(rowLeftNP), Row(rowRightNP), 0, evals
-        # print(rowRight, len(rowRight))
-        # try:
-        #     return rowLeft, rowRight, rowLeft[rint(0, len(rowLeft)-1)], rowRight[rint(0, len(rowRight)-1)], 0, evals
-        # except:
-        #     return rowLeft, rowRight, rowLeft[0], rowRight[0], 0, evals
+    
+    # Main Sway2 comparison
+    def half2(self, rows = None, cols = None, above = None, fun = 'AggCluster'):
+
+        def project(row):
+            return [row, cosine(dist(row,A),dist(row,B),c)]
+        def dist(row1,row2):
+            return self.dist(row1,row2,cols)
+                
+        misc = Misc()
+        the = misc.getThe()
+
+        outerList = []
+        for r in rows:
+            innerList = []  
+            for _,col in enumerate(cols or self.cols.x):
+                innerList.append(r.cells[col.at])
+            
+            outerList.append(innerList)
+    
+        outerList = np.array(outerList)
+
+        if fun == 'AggCluster':
+            clustering = AgglomerativeClustering(n_clusters = 2, linkage = 'ward')
+        else:
+            clustering = DBSCAN(eps = 3, min_samples = 2)
+        
+        clustering.fit(outerList)
+        left_indices = np.where(clustering.labels_ == 0)[0]
+        right_indices = np.where(clustering.labels_ == 1)[0]
+
+
+        rowLeft = []
+        rowRight = []
+
+        rowLeftNP = []
+        rowRightNP = []
+        for i in range(len(rows)):          
+            if i in left_indices and "?" not in rows[i].cells:
+                rowLeftNP.append(rows[i].cells)
+            else:
+                if "?" not in rows[i].cells:
+                    rowRightNP.append(rows[i].cells)
+        
+        rowLeftNP = np.mean(np.array(rowLeftNP), axis=0).tolist()
+        rowRightNP = np.mean(np.array(rowRightNP), axis=0).tolist()
+
+        evals = 1 if the['Reuse'] and above else 2
+
+        A = Row(rowLeftNP)
+        B = Row(rowRightNP)
+        c = dist(A,B)
+
+        val = list(map(project, rows))
+        val = sorted(val, key=lambda x: x[1])
+
+        nums = 0
+        mid = None
+        for values in val:
+            nums+=1
+            if nums <= len(rows)/2:
+                rowLeft.append(values[0])
+                mid = values[0]
+            else:
+                rowRight.append(values[0])
+
+        return rowLeft, rowRight, rowLeft[rint(0, len(rowLeft)-1)], rowRight[rint(0, len(rowRight)-1)], 0, evals
+    
+
 
     def half(self, rows = None, cols = None, above = None):
         misc = Misc()
@@ -161,6 +225,15 @@ class Data:
         for _,col in enumerate(ys):
             x = col.norm(row1.cells[col.at])
             y = col.norm(row2.cells[col.at])
+            s1 = s1 - math.exp(col.w * (x-y)/len(ys))
+            s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
+        return s1 < s2
+
+    def compareDicts(self, dict1, dict2):
+        s1,s2,ys = 0,0,self.cols.y
+        for _,col in enumerate(ys):
+            x = col.norm(dict1[col.txt])
+            y = col.norm(dict2[col.txt])
             s1 = s1 - math.exp(col.w * (x-y)/len(ys))
             s2 = s2 - math.exp(col.w * (-x+y)/len(ys))
         return s1 < s2
@@ -226,7 +299,7 @@ class Data:
             if len(rows) <= len(self.rows)**the['min']:
                 return rows, many(worse, the["rest"]*len(rows)), evalsZ
             else:
-                l,r,A,B,_, evals = self.half2(rows,None,above)
+                l,r,A,B,_, evals = self.half2(rows,None,above, "AggCluster")
                 if self.better(B,A):
                     l,r,A,B = r,l,B,A
                 for i in r:

@@ -11,7 +11,7 @@ constants = {
                     " -g  --go      start-up action              = nothing\n"
                     " -h  --help    show help                    = false\n"
                     " -H  --Halves  search space for clustering  = 512\n"
-                    " -m  --min     size of smallest cluster     = 0.2\n"
+                    " -m  --min     size of smallest cluster     = 0.5\n"
                     " -M  --Max     numbers                      = 512\n"
                     " -p  --p       dist coefficient             = 2\n"
                     " -r  --rest    how many of rest to sample   = 4\n"
@@ -21,6 +21,7 @@ constants = {
                     " -s  --seed    random number seed           = 937162211\n"
                     " -n  --n_iter  no of iterations             = 20\n"
                     " -t  --cliff   cliffs                       = 0.4\n"
+                    " -o  --options  options                     = 2\n"
                     "ACTIONS:\n"
     )
 }

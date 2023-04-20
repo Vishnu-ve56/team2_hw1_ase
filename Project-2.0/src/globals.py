@@ -14,6 +14,8 @@ bottom_table = [[['all', 'all'],None],
                 [['sway', 'xpln'],None],
                 [['sway', 'top'],None]]
 
+
+
 def avgStat(dataList,iter):
     res={}
     for i in dataList:
@@ -92,21 +94,6 @@ def o(t):
     return "{" + " ".join(str(val) for val in array) + "}"
 
 Seed=937162211
-
-# def putSeed():
-#     global Seed
-#     f=open("seed.txt","w")
-#     f.write(str(Seed))
-#     f.close()
-
-# def setSeed():
-#     global Seed
-#     f=open("seed.txt","r")
-#     contents=f.read()
-#     Seed=int(contents)
-#     print(Seed)
-#     f.close()
-
 
 def rand(lo, hi=None):
     global Seed
