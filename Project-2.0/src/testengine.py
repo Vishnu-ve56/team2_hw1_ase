@@ -106,7 +106,7 @@ class testengine:
                                 else:
                                     z0vals.append(rowZ.cells[z0.at])
 
-                            is_equal = cliffsDelta(y0vals, z0vals) 
+                            is_equal = cliffsDelta(y0vals, z0vals) and bootstrap(y0vals, z0vals)
                             
                             if not is_equal:
                                 bottom_table[i][1][k] = 'neq'
