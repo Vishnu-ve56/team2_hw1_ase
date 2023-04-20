@@ -307,6 +307,22 @@ class Data:
                 return worker(l,worse,evals+evalsZ,A)
         best,rest, evals = worker(self.rows,[],0)
         return self.clone(best),self.clone(rest), evals
+
+    def sway1iter(self):
+        misc = Misc()
+        the= misc.getThe()
+        def worker(rows,worse,evalsZ=None,above=None):
+            if len(rows) <= len(self.rows)**the['min']:
+                return rows, many(worse, the["rest"]*len(rows)), evalsZ
+            else:
+                l,r,A,B,_, evals = self.half3(rows,None,above)
+                if self.better(B,A):
+                    l,r,A,B = r,l,B,A
+                for i in r:
+                    worse.append(i)
+                return worker(l,worse,evals+evalsZ,A)
+        best,rest, evals = worker(self.rows,[],0)
+        return self.clone(best),self.clone(rest), evals
     
     def showRule(self, rule):
         def pretty(range):

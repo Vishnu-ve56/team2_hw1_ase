@@ -64,6 +64,12 @@ class testengine:
                 txt2 = data.xpln2.__name__
                 txt3 = the["min"]
 
+            elif(the["options"] == 5):
+                best,rest,evals = data.sway1iter()
+                rule,_ = data.xpln(best,rest)
+                txt1 = data.sway1iter.__name__
+                txt2 = data.xpln.__name__
+                txt3 = the["min"]
 
             if rule!=-1:
                 sta = {"mean": {} , "SD": {}}
@@ -111,7 +117,9 @@ class testengine:
                             if not is_equal:
                                 bottom_table[i][1][k] = 'neq'
                 count+=1
-        
+                if the["options"] == 5:
+                    the["n_iter"] = 1
+                    
         currentWorkingPath = os.path.dirname(__file__)
         fileName = os.path.join(currentWorkingPath, the["file"])
         with open(fileName.replace('/data', '/out').replace('.csv', '.out'), 'a') as outfile:
