@@ -34,8 +34,6 @@ class testengine:
         while count < the["n_iter"]:
             data=Data(the['file'])
 
-            # data2=handleMissingValues(the['file'],Data)
-
             if(the["options"] == 1):
                 best,rest,evals = data.sway()
                 rule,_ = data.xpln(best,rest)
@@ -176,12 +174,24 @@ class testengine:
                 betterDict.append(bDict) 
             statsDict = avgStat(top_table["sway"]["data"], the["n_iter"])
 
+            flag = 1
             outfile.write("\n" + "This is the average of the best gotten from sway: " +str(statsDict) + "\n")
             for i in range(len(betterDict)):
                 if(data.compareDicts(statsDict, betterDict[i])):
                     outfile.write("The rank with respect to the top 80 is here:(worst than how many from the top): " + str(i))
                     outfile.write("\n")
+                    flag = 0
                     break
+            
+            if flag:
+                    outfile.write("The rank with respect to the top 80 is 81, i.e it is worst than everything else")
+                    outfile.write("\n")
+            
+
+            footer = "-" * 200
+            outfile.write(footer)
+            outfile.write("\n")
+
 
         # for i in self.testcases:
         #     if self.the["go"].lower()=="all" or self.the["go"]==i:
