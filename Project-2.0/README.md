@@ -29,3 +29,12 @@ This out file for this dataset also shows the resutls of sway2, xpln2 and the pe
 How to Run the Code?
 
 In the current directory of Project-2 ```python -m src.main```
+
+To run for multiple files go into the src director and run ```.\run-all.sh``` (It will take a lot of time to run)
+
+For certain files use -f filedirectory
+
+For using sway2 and xpln1 use ```-o 2```
+For using sway2 and xpln2 use ```-o 3```
+For using sway and xpln2 use ```-o 4```
+
