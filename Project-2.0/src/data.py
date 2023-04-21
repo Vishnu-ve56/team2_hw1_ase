@@ -122,8 +122,8 @@ class Data:
                 
         misc = Misc()
         the = misc.getThe()
-        if len(rows) > 15000:
-            some = many(rows, the["Halves"])
+        if len(rows) > 35000:
+            some = many(rows, 40000)
         else:
             some = rows
             

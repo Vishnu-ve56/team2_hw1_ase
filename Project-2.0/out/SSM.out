@@ -158,79 +158,80 @@ This is the average of the best gotten from sway: {'NUMBERITERATIONS-': 7.4485, 
 The rank with respect to the top 80 is 81, i.e it is worst than everything else
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 sway2 and xpln for budget 0.5(the["min"])
         NUMBERITERATIONS-    TIMETOSOLUTION-    n_evals avg
 ----  -------------------  -----------------  -------------
 all                 30.94             506.07              0
-sway               18.944            331.244             10
-xpln               39.466            518.083             10
+sway               16.863            323.173             10
+xpln              32.6455            468.959             10
 top                  3.66              62.41         239360
               NUMBERITERATIONS-    TIMETOSOLUTION-
 ------------  -------------------  -----------------
-all to all    =                    =
+all to all    neq                  =
 all to sway   neq                  neq
 sway to xpln  neq                  neq
 sway to top   neq                  neq
 
 0th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 50.46, 'TIMETOSOLUTION-': 799.99}SD: {'NUMBERITERATIONS-': 110.46, 'TIMETOSOLUTION-': 1705.83}
+Mean: {'NUMBERITERATIONS-': 9.66, 'TIMETOSOLUTION-': 302.88}SD: {'NUMBERITERATIONS-': 45.73, 'TIMETOSOLUTION-': 1412.24}
 
 1th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 7.67, 'TIMETOSOLUTION-': 134.72}SD: {'NUMBERITERATIONS-': 3.67, 'TIMETOSOLUTION-': 54.08}
+Mean: {'NUMBERITERATIONS-': 7.06, 'TIMETOSOLUTION-': 137.8}SD: {'NUMBERITERATIONS-': 1.77, 'TIMETOSOLUTION-': 33.04}
 
 2th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 4.97, 'TIMETOSOLUTION-': 135.26}SD: {'NUMBERITERATIONS-': 0.96, 'TIMETOSOLUTION-': 32.21}
+Mean: {'NUMBERITERATIONS-': 5.07, 'TIMETOSOLUTION-': 138.28}SD: {'NUMBERITERATIONS-': 0.89, 'TIMETOSOLUTION-': 35.07}
 
 3th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 9.64, 'TIMETOSOLUTION-': 122.19}SD: {'NUMBERITERATIONS-': 3.87, 'TIMETOSOLUTION-': 31.99}
+Mean: {'NUMBERITERATIONS-': 5.2, 'TIMETOSOLUTION-': 162.3}SD: {'NUMBERITERATIONS-': 1.77, 'TIMETOSOLUTION-': 46.85}
 
 4th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 10.92, 'TIMETOSOLUTION-': 148.05}SD: {'NUMBERITERATIONS-': 6.64, 'TIMETOSOLUTION-': 73.13}
+Mean: {'NUMBERITERATIONS-': 5.7, 'TIMETOSOLUTION-': 101.64}SD: {'NUMBERITERATIONS-': 1.34, 'TIMETOSOLUTION-': 23.18}
 
 5th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 10.04, 'TIMETOSOLUTION-': 236.27}SD: {'NUMBERITERATIONS-': 45.69, 'TIMETOSOLUTION-': 1025.2}
+Mean: {'NUMBERITERATIONS-': 6.46, 'TIMETOSOLUTION-': 135.14}SD: {'NUMBERITERATIONS-': 3.09, 'TIMETOSOLUTION-': 59.05}
 
 6th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 13.32, 'TIMETOSOLUTION-': 173.67}SD: {'NUMBERITERATIONS-': 45.75, 'TIMETOSOLUTION-': 565.03}
+Mean: {'NUMBERITERATIONS-': 40.4, 'TIMETOSOLUTION-': 718.06}SD: {'NUMBERITERATIONS-': 124.97, 'TIMETOSOLUTION-': 2195.59}
 
 7th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 14.57, 'TIMETOSOLUTION-': 263.02}SD: {'NUMBERITERATIONS-': 64.35, 'TIMETOSOLUTION-': 1143.33}
+Mean: {'NUMBERITERATIONS-': 5.56, 'TIMETOSOLUTION-': 110.19}SD: {'NUMBERITERATIONS-': 1.15, 'TIMETOSOLUTION-': 23.68}
 
 8th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 9.79, 'TIMETOSOLUTION-': 88.87}SD: {'NUMBERITERATIONS-': 7.71, 'TIMETOSOLUTION-': 38.99}
+Mean: {'NUMBERITERATIONS-': 6.18, 'TIMETOSOLUTION-': 147.57}SD: {'NUMBERITERATIONS-': 1.23, 'TIMETOSOLUTION-': 34.9}
 
 9th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 43.48, 'TIMETOSOLUTION-': 532.76}SD: {'NUMBERITERATIONS-': 116.07, 'TIMETOSOLUTION-': 1435.53}
+Mean: {'NUMBERITERATIONS-': 5.06, 'TIMETOSOLUTION-': 123.6}SD: {'NUMBERITERATIONS-': 0.93, 'TIMETOSOLUTION-': 26.74}
 
 10th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 7.65, 'TIMETOSOLUTION-': 90.25}SD: {'NUMBERITERATIONS-': 3.64, 'TIMETOSOLUTION-': 33.0}
+Mean: {'NUMBERITERATIONS-': 56.49, 'TIMETOSOLUTION-': 706.5}SD: {'NUMBERITERATIONS-': 145.45, 'TIMETOSOLUTION-': 1853.83}
 
 11th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 7.76, 'TIMETOSOLUTION-': 161.46}SD: {'NUMBERITERATIONS-': 2.12, 'TIMETOSOLUTION-': 45.12}
+Mean: {'NUMBERITERATIONS-': 8.04, 'TIMETOSOLUTION-': 117.52}SD: {'NUMBERITERATIONS-': 23.17, 'TIMETOSOLUTION-': 238.78}
 
 12th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 4.75, 'TIMETOSOLUTION-': 151.37}SD: {'NUMBERITERATIONS-': 0.85, 'TIMETOSOLUTION-': 36.11}
+Mean: {'NUMBERITERATIONS-': 35.53, 'TIMETOSOLUTION-': 907.12}SD: {'NUMBERITERATIONS-': 117.57, 'TIMETOSOLUTION-': 2954.34}
 
 13th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 27.96, 'TIMETOSOLUTION-': 473.14}SD: {'NUMBERITERATIONS-': 100.24, 'TIMETOSOLUTION-': 1679.39}
+Mean: {'NUMBERITERATIONS-': 46.92, 'TIMETOSOLUTION-': 355.24}SD: {'NUMBERITERATIONS-': 118.61, 'TIMETOSOLUTION-': 922.47}
 
 14th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 20.63, 'TIMETOSOLUTION-': 518.11}SD: {'NUMBERITERATIONS-': 84.57, 'TIMETOSOLUTION-': 2050.64}
+Mean: {'NUMBERITERATIONS-': 7.49, 'TIMETOSOLUTION-': 109.12}SD: {'NUMBERITERATIONS-': 4.35, 'TIMETOSOLUTION-': 52.19}
 
 15th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 5.15, 'TIMETOSOLUTION-': 129.3}SD: {'NUMBERITERATIONS-': 1.07, 'TIMETOSOLUTION-': 28.72}
+Mean: {'NUMBERITERATIONS-': 4.73, 'TIMETOSOLUTION-': 155.65}SD: {'NUMBERITERATIONS-': 0.89, 'TIMETOSOLUTION-': 32.81}
 
 16th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 35.76, 'TIMETOSOLUTION-': 674.64}SD: {'NUMBERITERATIONS-': 117.53, 'TIMETOSOLUTION-': 2220.72}
+Mean: {'NUMBERITERATIONS-': 44.75, 'TIMETOSOLUTION-': 1114.13}SD: {'NUMBERITERATIONS-': 133.84, 'TIMETOSOLUTION-': 3334.24}
 
 17th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 83.69, 'TIMETOSOLUTION-': 1547.16}SD: {'NUMBERITERATIONS-': 155.53, 'TIMETOSOLUTION-': 2917.29}
+Mean: {'NUMBERITERATIONS-': 5.1, 'TIMETOSOLUTION-': 128.21}SD: {'NUMBERITERATIONS-': 1.2, 'TIMETOSOLUTION-': 30.71}
 
 18th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 5.0, 'TIMETOSOLUTION-': 129.79}SD: {'NUMBERITERATIONS-': 0.99, 'TIMETOSOLUTION-': 27.52}
+Mean: {'NUMBERITERATIONS-': 24.86, 'TIMETOSOLUTION-': 661.14}SD: {'NUMBERITERATIONS-': 95.48, 'TIMETOSOLUTION-': 2518.33}
 
 19th iteration mean and sd:
-Mean: {'NUMBERITERATIONS-': 5.67, 'TIMETOSOLUTION-': 114.85}SD: {'NUMBERITERATIONS-': 1.75, 'TIMETOSOLUTION-': 29.06}
+Mean: {'NUMBERITERATIONS-': 7.0, 'TIMETOSOLUTION-': 131.38}SD: {'NUMBERITERATIONS-': 2.68, 'TIMETOSOLUTION-': 37.21}
 
 These are the 80 best ranks according to zitlers domination predicate for the whole dataset
 [0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 90, 4, 0, 3, 33.305]
@@ -313,6 +314,6 @@ These are the 80 best ranks according to zitlers domination predicate for the wh
 [1, 0, 0, 0, 0, 0, 1, 0, 0, 80, 10, 7, 0, 3, 73.372]
 [1, 0, 0, 1, 0, 0, 0, 1, 0, 90, 5, 7, 0, 3, 73.463]
 
-This is the average of the best gotten from sway: {'NUMBERITERATIONS-': 18.944, 'TIMETOSOLUTION-': 331.24350000000004}
+This is the average of the best gotten from sway: {'NUMBERITERATIONS-': 16.863, 'TIMETOSOLUTION-': 323.1735}
 The rank with respect to the top 80 is 81, i.e it is worst than everything else
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
