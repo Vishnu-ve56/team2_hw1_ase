@@ -1,4 +1,15 @@
-This repo contains the code for End of Term project. 
+
+# You Require:
+
+Python - Version 3.9+
+
+Pandas - 2.0.0
+
+sklearn - 1.2.2
+
+tabulate - 0.9.0
+
+# This repo contains the code for End of Term project. 
 
 This project involves writing an algorithm which would use semi supervised clustering in order to solve a multiobjective optimization task. 
 
@@ -12,7 +23,7 @@ The flow of work is as follows:
 6. We attempted to tweak the rule generator and called it xpln2 and its performance can be found in the respective dataset. out file. 
 7. Significance and effect size tests were run on the results to see if we got anything that was statistically significant. 
 
-Every Dataset.out is of the format:
+# Every Dataset.out is of the format:
 
 1. First the top and bottom tables are generated. 
 2. A table containing all, sway, xpln and top is generated. 
@@ -26,11 +37,27 @@ We perform clustering with different budgets and the results are put here.
 This out file for this dataset also shows the resutls of sway2, xpln2 and the performance of sway2 on different budgets.
 
 
-How to Run the Code?
+# How to Run the Code?
 
-In the current directory of Project-2 ```python -m src.main```
+Before running the code preprocess the dataset by going into Project-2 directory:
 
-To run for multiple files go into the src director and run ```.\run-all.sh``` (It will take a lot of time to run)
+```cd .\Project-2.0\```
+
+Then go into data and run
+
+```python .\changeCSVS.py```
+
+Go back to Project-2:
+
+```cd ..```
+
+In the current directory of Project-2 
+
+```python -m src.main```
+
+To run for multiple files go into the src director and run 
+
+```.\run-all.sh``` (It will take a lot of time to run)
 
 For certain files use -f filedirectoryName
 
