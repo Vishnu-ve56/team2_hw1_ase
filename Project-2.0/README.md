@@ -32,9 +32,11 @@ In the current directory of Project-2 ```python -m src.main```
 
 To run for multiple files go into the src director and run ```.\run-all.sh``` (It will take a lot of time to run)
 
-For certain files use -f filedirectory
+For certain files use -f filedirectoryName
 
 For using sway2 and xpln1 use ```-o 2```
+
 For using sway2 and xpln2 use ```-o 3```
+
 For using sway and xpln2 use ```-o 4```
 
