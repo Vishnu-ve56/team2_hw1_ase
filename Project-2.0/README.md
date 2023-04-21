@@ -24,3 +24,8 @@ However, for auto93.csv,
 
 We perform clustering with different budgets and the results are put here. 
 This out file for this dataset also shows the resutls of sway2, xpln2 and the performance of sway2 on different budgets.
+
+
+How to Run the Code?
+
+In the current directory of Project-2 ```python -m src.main```
