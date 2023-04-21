@@ -193,13 +193,6 @@ class testengine:
             outfile.write("\n")
 
 
-        # for i in self.testcases:
-        #     if self.the["go"].lower()=="all" or self.the["go"]==i:
-        #         if self.testcases[i][1]()== False:
-        #             self.fails+=1
-        #             print("❌ fail:",i)
-        #         else:
-        #             print("✅ pass:",i)
 
 
 
