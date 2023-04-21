@@ -1,6 +1,7 @@
 import glob
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 # Get a list of all CSV files in the folder
 csv_files = glob.glob("*.csv")
@@ -22,6 +23,10 @@ for csv_file in csv_files:
         mode_val = df[col].mode()[0]  # get mode of column
         df[col] = df[col].fillna(mode_val)  # replace NaN values with mode value
 
+    le = LabelEncoder()
+    for sym in lowercase_cols:
+        col = le.fit_transform(df[sym])
+        df[sym] = col.copy()
 
     # Replace all other columns with their mean
     other_cols = [col for col in df.columns if col not in lowercase_cols]
