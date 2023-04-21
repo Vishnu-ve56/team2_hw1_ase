@@ -157,3 +157,162 @@ These are the 80 best ranks according to zitlers domination predicate for the wh
 This is the average of the best gotten from sway: {'NUMBERITERATIONS-': 7.4485, 'TIMETOSOLUTION-': 135.166}
 The rank with respect to the top 80 is 81, i.e it is worst than everything else
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sway2 and xpln for budget 0.5(the["min"])
+        NUMBERITERATIONS-    TIMETOSOLUTION-    n_evals avg
+----  -------------------  -----------------  -------------
+all                 30.94             506.07              0
+sway               18.944            331.244             10
+xpln               39.466            518.083             10
+top                  3.66              62.41         239360
+              NUMBERITERATIONS-    TIMETOSOLUTION-
+------------  -------------------  -----------------
+all to all    =                    =
+all to sway   neq                  neq
+sway to xpln  neq                  neq
+sway to top   neq                  neq
+
+0th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 50.46, 'TIMETOSOLUTION-': 799.99}SD: {'NUMBERITERATIONS-': 110.46, 'TIMETOSOLUTION-': 1705.83}
+
+1th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 7.67, 'TIMETOSOLUTION-': 134.72}SD: {'NUMBERITERATIONS-': 3.67, 'TIMETOSOLUTION-': 54.08}
+
+2th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 4.97, 'TIMETOSOLUTION-': 135.26}SD: {'NUMBERITERATIONS-': 0.96, 'TIMETOSOLUTION-': 32.21}
+
+3th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 9.64, 'TIMETOSOLUTION-': 122.19}SD: {'NUMBERITERATIONS-': 3.87, 'TIMETOSOLUTION-': 31.99}
+
+4th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 10.92, 'TIMETOSOLUTION-': 148.05}SD: {'NUMBERITERATIONS-': 6.64, 'TIMETOSOLUTION-': 73.13}
+
+5th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 10.04, 'TIMETOSOLUTION-': 236.27}SD: {'NUMBERITERATIONS-': 45.69, 'TIMETOSOLUTION-': 1025.2}
+
+6th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 13.32, 'TIMETOSOLUTION-': 173.67}SD: {'NUMBERITERATIONS-': 45.75, 'TIMETOSOLUTION-': 565.03}
+
+7th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 14.57, 'TIMETOSOLUTION-': 263.02}SD: {'NUMBERITERATIONS-': 64.35, 'TIMETOSOLUTION-': 1143.33}
+
+8th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 9.79, 'TIMETOSOLUTION-': 88.87}SD: {'NUMBERITERATIONS-': 7.71, 'TIMETOSOLUTION-': 38.99}
+
+9th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 43.48, 'TIMETOSOLUTION-': 532.76}SD: {'NUMBERITERATIONS-': 116.07, 'TIMETOSOLUTION-': 1435.53}
+
+10th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 7.65, 'TIMETOSOLUTION-': 90.25}SD: {'NUMBERITERATIONS-': 3.64, 'TIMETOSOLUTION-': 33.0}
+
+11th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 7.76, 'TIMETOSOLUTION-': 161.46}SD: {'NUMBERITERATIONS-': 2.12, 'TIMETOSOLUTION-': 45.12}
+
+12th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 4.75, 'TIMETOSOLUTION-': 151.37}SD: {'NUMBERITERATIONS-': 0.85, 'TIMETOSOLUTION-': 36.11}
+
+13th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 27.96, 'TIMETOSOLUTION-': 473.14}SD: {'NUMBERITERATIONS-': 100.24, 'TIMETOSOLUTION-': 1679.39}
+
+14th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 20.63, 'TIMETOSOLUTION-': 518.11}SD: {'NUMBERITERATIONS-': 84.57, 'TIMETOSOLUTION-': 2050.64}
+
+15th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 5.15, 'TIMETOSOLUTION-': 129.3}SD: {'NUMBERITERATIONS-': 1.07, 'TIMETOSOLUTION-': 28.72}
+
+16th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 35.76, 'TIMETOSOLUTION-': 674.64}SD: {'NUMBERITERATIONS-': 117.53, 'TIMETOSOLUTION-': 2220.72}
+
+17th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 83.69, 'TIMETOSOLUTION-': 1547.16}SD: {'NUMBERITERATIONS-': 155.53, 'TIMETOSOLUTION-': 2917.29}
+
+18th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 5.0, 'TIMETOSOLUTION-': 129.79}SD: {'NUMBERITERATIONS-': 0.99, 'TIMETOSOLUTION-': 27.52}
+
+19th iteration mean and sd:
+Mean: {'NUMBERITERATIONS-': 5.67, 'TIMETOSOLUTION-': 114.85}SD: {'NUMBERITERATIONS-': 1.75, 'TIMETOSOLUTION-': 29.06}
+
+These are the 80 best ranks according to zitlers domination predicate for the whole dataset
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 90, 4, 0, 3, 33.305]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 85, 4, 0, 3, 36.868]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 90, 5, 0, 3, 39.084]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 85, 5, 0, 3, 39.722]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 5, 4, 0, 3, 39.832]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 85, 5, 5, 0, 3, 40.785]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 5, 5, 0, 3, 41.979]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 85, 6, 0, 3, 44.59600001]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 90, 6, 0, 3, 44.707]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 90, 4, 0, 3, 47.831]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 5, 6, 0, 3, 47.874]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 85, 90, 7, 0, 3, 48.892]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 85, 90, 7, 0, 3, 49.043]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 85, 4, 0, 3, 49.069]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 85, 5, 4, 0, 3, 49.094]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 10, 80, 7, 0, 3, 50.52399999]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 85, 5, 6, 0, 3, 50.687]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 90, 7, 0, 3, 50.725]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 5, 90, 7, 0, 3, 50.87]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 5, 90, 7, 0, 3, 50.943]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 10, 90, 7, 0, 3, 51.366]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 85, 7, 0, 3, 53.18800001]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 85, 5, 0, 3, 53.22599999]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 85, 5, 7, 0, 3, 54.088]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 80, 10, 7, 0, 3, 54.228]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 85, 90, 8, 0, 3, 54.236]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 85, 90, 8, 0, 3, 54.252]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 85, 10, 7, 0, 3, 54.284]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 85, 5, 7, 0, 3, 54.371]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 5, 85, 7, 0, 3, 54.89299999]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 5, 85, 7, 0, 3, 54.89900001]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 5, 7, 0, 3, 55.084]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 90, 5, 4, 0, 3, 55.461]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 90, 5, 5, 0, 3, 55.829]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 85, 8, 0, 3, 56.19599999]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 10, 80, 8, 0, 3, 56.31]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 5, 90, 8, 0, 3, 56.371]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 10, 90, 8, 0, 3, 56.454]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 5, 90, 8, 0, 3, 56.725]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 90, 5, 7, 0, 3, 57.113]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 10, 7, 0, 3, 57.273]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 85, 5, 5, 0, 3, 57.304]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 85, 5, 7, 0, 3, 57.583]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 5, 85, 8, 0, 3, 57.797]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 5, 85, 8, 0, 3, 58.689]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 5, 8, 0, 3, 58.907]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 90, 5, 0, 3, 59.542]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 90, 10, 8, 0, 3, 60.387]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 85, 5, 8, 0, 3, 60.442]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 85, 10, 6, 0, 3, 61.249]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 90, 6, 0, 3, 61.594]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 85, 5, 8, 0, 3, 61.877]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 85, 10, 8, 0, 3, 62.397]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 90, 5, 7, 0, 3, 63.258]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 5, 90, 8, 0, 3, 63.32]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 85, 6, 0, 3, 63.34299999]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 90, 5, 8, 0, 3, 64.199]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 90, 5, 8, 0, 3, 64.268]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 90, 5, 6, 0, 3, 65.243]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 85, 5, 8, 0, 3, 67.112]
+[0, 0, 0, 0, 1, 0, 1, 0, 0, 80, 10, 8, 0, 3, 67.388]
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 85, 90, 7, 0, 3, 67.412]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 85, 10, 7, 0, 3, 68.483]
+[1, 0, 0, 0, 0, 0, 0, 1, 0, 85, 90, 7, 0, 3, 68.583]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 10, 80, 7, 0, 3, 68.82900001]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 85, 5, 6, 0, 3, 69.104]
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 5, 90, 7, 0, 3, 69.507]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 90, 7, 0, 3, 69.558]
+[1, 0, 0, 0, 0, 0, 0, 1, 0, 5, 90, 7, 0, 3, 69.687]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 10, 90, 7, 0, 3, 71.75]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 90, 10, 7, 0, 3, 71.868]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 90, 5, 7, 0, 3, 72.51]
+[0, 0, 0, 1, 1, 0, 0, 1, 0, 85, 90, 3, 0, 4, 34.921]
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 85, 90, 3, 0, 4, 34.931]
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 5, 85, 7, 0, 3, 72.797]
+[1, 0, 0, 0, 0, 0, 0, 1, 0, 5, 85, 7, 0, 3, 72.84800001]
+[1, 0, 0, 0, 0, 0, 0, 1, 0, 85, 5, 7, 0, 3, 73.273]
+[1, 0, 0, 0, 0, 0, 1, 0, 0, 80, 10, 7, 0, 3, 73.372]
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 90, 5, 7, 0, 3, 73.463]
+
+This is the average of the best gotten from sway: {'NUMBERITERATIONS-': 18.944, 'TIMETOSOLUTION-': 331.24350000000004}
+The rank with respect to the top 80 is 81, i.e it is worst than everything else
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

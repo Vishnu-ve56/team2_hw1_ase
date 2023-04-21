@@ -122,9 +122,13 @@ class Data:
                 
         misc = Misc()
         the = misc.getThe()
-
+        if len(rows) > 15000:
+            some = many(rows, the["Halves"])
+        else:
+            some = rows
+            
         outerList = []
-        for r in rows:
+        for r in some:
             innerList = []  
             for _,col in enumerate(cols or self.cols.x):
                 innerList.append(r.cells[col.at])
@@ -148,12 +152,12 @@ class Data:
 
         rowLeftNP = []
         rowRightNP = []
-        for i in range(len(rows)):          
-            if i in left_indices and "?" not in rows[i].cells:
-                rowLeftNP.append(rows[i].cells)
+        for i in range(len(some)):          
+            if i in left_indices and "?" not in some[i].cells:
+                rowLeftNP.append(some[i].cells)
             else:
-                if "?" not in rows[i].cells:
-                    rowRightNP.append(rows[i].cells)
+                if "?" not in some[i].cells:
+                    rowRightNP.append(some[i].cells)
         
         rowLeftNP = np.mean(np.array(rowLeftNP), axis=0).tolist()
         rowRightNP = np.mean(np.array(rowRightNP), axis=0).tolist()
